@@ -68,6 +68,7 @@ public class RedwoodForests {
     {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
             event.accept(ModItems.REDWOOD_BARK);
+            event.accept(ModItems.CHARRED_REDWOOD_BARK);
         }
     }
 

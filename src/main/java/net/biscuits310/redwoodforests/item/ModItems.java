@@ -11,6 +11,7 @@ public class ModItems
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(RedwoodForests.MODID);
 
     public static final DeferredItem<Item> REDWOOD_BARK = ITEMS.registerSimpleItem("redwood_bark");
+    public static final DeferredItem<Item> CHARRED_REDWOOD_BARK = ITEMS.registerSimpleItem("charred_redwood_bark");
 
     public static void register(IEventBus eventBus)
     {

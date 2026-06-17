@@ -19,5 +19,6 @@ public class ModModelProvider extends ModelProvider
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels)
     {
         itemModels.generateFlatItem(ModItems.REDWOOD_BARK.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.CHARRED_REDWOOD_BARK.get(), ModelTemplates.FLAT_ITEM);
     }
 }
