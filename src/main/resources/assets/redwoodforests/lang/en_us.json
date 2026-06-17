@@ -1,0 +1,13 @@
+{
+  "itemGroup.redwoodforests": "Example Mod Tab",
+  "block.redwoodforests.example_block": "Example Block",
+  "item.redwoodforests.example_item": "Example Item",
+
+  "redwoodforests.configuration.title": "Redwood Forests Configs",
+  "redwoodforests.configuration.section.redwoodforests.common.toml": "Redwood Forests Configs",
+  "redwoodforests.configuration.section.redwoodforests.common.toml.title": "Redwood Forests Configs",
+  "redwoodforests.configuration.items": "Item List",
+  "redwoodforests.configuration.logDirtBlock": "Log Dirt Block",
+  "redwoodforests.configuration.magicNumberIntroduction": "Magic Number Text",
+  "redwoodforests.configuration.magicNumber": "Magic Number"
+}
