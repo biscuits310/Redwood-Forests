@@ -1,5 +1,6 @@
 package net.biscuits310.redwoodforests;
 
+import net.biscuits310.redwoodforests.item.ModItems;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -46,6 +47,8 @@ public class RedwoodForests {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        ModItems.register(modEventBus);
+
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (RedwoodForests) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
@@ -61,7 +64,11 @@ public class RedwoodForests {
     private void commonSetup(FMLCommonSetupEvent event) {
     }
 
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
+    private void addCreative(BuildCreativeModeTabContentsEvent event)
+    {
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+            event.accept(ModItems.REDWOOD_BARK);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
