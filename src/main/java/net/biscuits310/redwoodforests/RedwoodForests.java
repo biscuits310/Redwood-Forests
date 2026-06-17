@@ -1,5 +1,6 @@
 package net.biscuits310.redwoodforests;
 
+import net.biscuits310.redwoodforests.creativemodetab.ModCreativeModeTabs;
 import net.biscuits310.redwoodforests.item.ModItems;
 import org.slf4j.Logger;
 
@@ -47,6 +48,8 @@ public class RedwoodForests {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        ModCreativeModeTabs.register(modEventBus);
+
         ModItems.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
@@ -66,10 +69,6 @@ public class RedwoodForests {
 
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
-            event.accept(ModItems.REDWOOD_BARK);
-            event.accept(ModItems.CHARRED_REDWOOD_BARK);
-        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
