@@ -1,6 +1,7 @@
 package net.biscuits310.redwoodforests.creativemodetab;
 
 import net.biscuits310.redwoodforests.RedwoodForests;
+import net.biscuits310.redwoodforests.block.ModBlocks;
 import net.biscuits310.redwoodforests.item.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -24,6 +25,7 @@ public class ModCreativeModeTabs
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.REDWOOD_BARK);
                         output.accept(ModItems.CHARRED_REDWOOD_BARK);
+                        output.accept(ModBlocks.REDWOOD_PLANKS);
                     })
                     .build());
 

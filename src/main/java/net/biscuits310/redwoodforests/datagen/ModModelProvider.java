@@ -1,6 +1,7 @@
 package net.biscuits310.redwoodforests.datagen;
 
 import net.biscuits310.redwoodforests.RedwoodForests;
+import net.biscuits310.redwoodforests.block.ModBlocks;
 import net.biscuits310.redwoodforests.item.ModItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
@@ -20,5 +21,8 @@ public class ModModelProvider extends ModelProvider
     {
         itemModels.generateFlatItem(ModItems.REDWOOD_BARK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.CHARRED_REDWOOD_BARK.get(), ModelTemplates.FLAT_ITEM);
+
+        //BLOCKS
+        blockModels.createTrivialCube(ModBlocks.REDWOOD_PLANKS.get());
     }
 }

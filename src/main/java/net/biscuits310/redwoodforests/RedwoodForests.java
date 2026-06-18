@@ -1,5 +1,6 @@
 package net.biscuits310.redwoodforests;
 
+import net.biscuits310.redwoodforests.block.ModBlocks;
 import net.biscuits310.redwoodforests.creativemodetab.ModCreativeModeTabs;
 import net.biscuits310.redwoodforests.item.ModItems;
 import org.slf4j.Logger;
@@ -51,6 +52,8 @@ public class RedwoodForests {
         ModCreativeModeTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
+
+        ModBlocks.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (RedwoodForests) to respond directly to events.
