@@ -4,8 +4,10 @@ import net.biscuits310.redwoodforests.RedwoodForests;
 import net.biscuits310.redwoodforests.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -19,7 +21,14 @@ public class ModBlocks
 
     public static final DeferredBlock<Block> REDWOOD_PLANKS = registerBlock("redwood_planks",
             properties -> new Block(properties.strength(3f)
-                    .sound(SoundType.WOOD)));
+                    .mapColor(MapColor.WOOD)
+                    .sound(SoundType.WOOD)
+                    .ignitedByLava()));
+    public static final DeferredBlock<Block> REDWOOD_LOG = registerBlock("redwood_log",
+            properties -> new RotatedPillarBlock(properties.strength(3f)
+                    .mapColor(MapColor.WOOD)
+                    .sound(SoundType.WOOD)
+                    .ignitedByLava()));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> function)
     {

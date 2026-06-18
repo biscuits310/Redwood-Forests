@@ -7,6 +7,7 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.data.PackOutput;
 
 public class ModModelProvider extends ModelProvider
@@ -24,5 +25,7 @@ public class ModModelProvider extends ModelProvider
 
         //BLOCKS
         blockModels.createTrivialCube(ModBlocks.REDWOOD_PLANKS.get());
+        blockModels.woodProvider(ModBlocks.REDWOOD_LOG.get()).log(ModBlocks.REDWOOD_LOG.get());
+
     }
 }
