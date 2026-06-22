@@ -1,9 +1,6 @@
 package net.biscuits310.redwoodforests;
 
-import net.biscuits310.redwoodforests.datagen.ModBlockLootTableProvider;
-import net.biscuits310.redwoodforests.datagen.ModBlockTagsProvider;
-import net.biscuits310.redwoodforests.datagen.ModModelProvider;
-import net.biscuits310.redwoodforests.datagen.ModRecipeProvider;
+import net.biscuits310.redwoodforests.datagen.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
@@ -30,6 +27,7 @@ public class RedwoodForestsDataGen
         generator.addProvider(true, new LootTableProvider(packOutput, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
         generator.addProvider(true, new ModRecipeProvider.Runner(packOutput,lookupProvider));
+        generator.addProvider(true, new ModItemTagsProvider(packOutput, lookupProvider));
     }
 
 }
