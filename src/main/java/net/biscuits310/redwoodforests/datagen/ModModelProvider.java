@@ -20,12 +20,18 @@ public class ModModelProvider extends ModelProvider
     @Override
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels)
     {
+        ModBlockModelGenerators modBlockModels = new ModBlockModelGenerators(
+                blockModels.blockStateOutput,
+                blockModels.itemModelOutput,
+                blockModels.modelOutput
+        );
+
         itemModels.generateFlatItem(ModItems.REDWOOD_BARK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.CHARRED_REDWOOD_BARK.get(), ModelTemplates.FLAT_ITEM);
 
         //BLOCKS
         blockModels.createTrivialCube(ModBlocks.REDWOOD_PLANKS.get());
-        blockModels.woodProvider(ModBlocks.REDWOOD_LOG.get()).log(ModBlocks.REDWOOD_LOG.get());
+        modBlockModels.createVariatedLogBLock(ModBlocks.REDWOOD_LOG.get(), 2);
 
     }
 }
