@@ -29,6 +29,11 @@ public class ModBlocks
                     .mapColor(MapColor.WOOD)
                     .sound(SoundType.WOOD)
                     .ignitedByLava()));
+    public static final DeferredBlock<Block> STRIPPED_REDWOOD_LOG = registerBlock("stripped_redwood_log",
+            properties -> new RotatedPillarBlock(properties.strength(3f)
+                    .mapColor(MapColor.WOOD)
+                    .sound(SoundType.WOOD)
+                    .ignitedByLava()));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> function)
     {

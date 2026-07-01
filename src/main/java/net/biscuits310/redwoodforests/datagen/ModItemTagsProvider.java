@@ -3,9 +3,11 @@ package net.biscuits310.redwoodforests.datagen;
 import net.biscuits310.redwoodforests.RedwoodForests;
 import net.biscuits310.redwoodforests.block.ModBlocks;
 import net.biscuits310.redwoodforests.item.ModItems;
+import net.biscuits310.redwoodforests.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.ItemTags;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ItemTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
@@ -24,12 +26,22 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModBlocks.REDWOOD_PLANKS.asItem());
 
         tag(ItemTags.COMPLETES_FIND_TREE_TUTORIAL)
-                .add(ModBlocks.REDWOOD_LOG.asItem());
+                .add(ModBlocks.REDWOOD_LOG.asItem())
+                .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem());
 
         tag(ItemTags.LOGS)
-                .add(ModBlocks.REDWOOD_LOG.asItem());
+                .add(ModBlocks.REDWOOD_LOG.asItem())
+                .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem());
 
         tag(ItemTags.LOGS_THAT_BURN)
+                .add(ModBlocks.REDWOOD_LOG.asItem())
+                .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem());
+
+        tag(Tags.Items.STRIPPED_LOGS)
+                .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem());
+
+        tag(ModTags.Items.REDWOOD_LOGS)
+                .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem())
                 .add(ModBlocks.REDWOOD_LOG.asItem());
     }
 }

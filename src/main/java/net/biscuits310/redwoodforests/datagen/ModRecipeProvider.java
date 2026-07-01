@@ -2,6 +2,7 @@ package net.biscuits310.redwoodforests.datagen;
 
 import net.biscuits310.redwoodforests.block.ModBlocks;
 import net.biscuits310.redwoodforests.item.ModItems;
+import net.biscuits310.redwoodforests.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -34,8 +35,8 @@ public class ModRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes() {
         shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.REDWOOD_PLANKS.get(),4)
-                .requires(ModBlocks.REDWOOD_LOG)
-                .unlockedBy(getHasName(ModBlocks.REDWOOD_LOG.get()), has(ModBlocks.REDWOOD_LOG))
+                .requires(ModTags.Items.REDWOOD_LOGS)
+                .unlockedBy(getHasName(ModBlocks.REDWOOD_LOG.get()), has(ModTags.Items.REDWOOD_LOGS))
                 .group("redwood_planks")
                 .save(output);
     }

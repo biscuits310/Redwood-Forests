@@ -20,6 +20,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected void generate() {
         dropSelf(ModBlocks.REDWOOD_LOG.get());
         dropSelf(ModBlocks.REDWOOD_PLANKS.get());
+        dropSelf(ModBlocks.STRIPPED_REDWOOD_LOG.get());
     }
 
     @Override

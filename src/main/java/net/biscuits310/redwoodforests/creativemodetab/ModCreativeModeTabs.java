@@ -27,6 +27,7 @@ public class ModCreativeModeTabs
                         output.accept(ModItems.CHARRED_REDWOOD_BARK);
                         output.accept(ModBlocks.REDWOOD_PLANKS);
                         output.accept(ModBlocks.REDWOOD_LOG);
+                        output.accept(ModBlocks.STRIPPED_REDWOOD_LOG);
                     })
                     .build());
 
