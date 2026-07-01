@@ -31,6 +31,6 @@ public class ModModelProvider extends ModelProvider
 
         //BLOCKS
         blockModels.createTrivialCube(ModBlocks.REDWOOD_PLANKS.get());
-        modBlockModels.createVariatedLogBLock(ModBlocks.REDWOOD_LOG.get(), 2);
+        modBlockModels.createVariatedLogBLock(ModBlocks.REDWOOD_LOG.get(), 3);
     }
 }
