@@ -1,6 +1,7 @@
 package net.biscuits310.redwoodforests.block;
 
 import net.biscuits310.redwoodforests.RedwoodForests;
+import net.biscuits310.redwoodforests.block.custom.ModLogBlock;
 import net.biscuits310.redwoodforests.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
@@ -25,10 +26,11 @@ public class ModBlocks
                     .sound(SoundType.WOOD)
                     .ignitedByLava()));
     public static final DeferredBlock<Block> REDWOOD_LOG = registerBlock("redwood_log",
-            properties -> new RotatedPillarBlock(properties.strength(3f)
+            properties -> new ModLogBlock(properties.strength(3f)
                     .mapColor(MapColor.WOOD)
                     .sound(SoundType.WOOD)
-                    .ignitedByLava()));
+                    .ignitedByLava(),
+                    ModBlocks.STRIPPED_REDWOOD_LOG));
     public static final DeferredBlock<Block> STRIPPED_REDWOOD_LOG = registerBlock("stripped_redwood_log",
             properties -> new RotatedPillarBlock(properties.strength(3f)
                     .mapColor(MapColor.WOOD)

@@ -30,7 +30,7 @@ public class ModBlockModelGenerators extends BlockModelGenerators {
     public void createVariatedLogBLock(Block block, int numSides) {
         Variant[] variants = new Variant[numSides];
         for (int i = 1; i <= numSides; i++){
-            variants[i-1] = plainModel(ModelTemplates.CUBE_COLUMN_HORIZONTAL.create(
+            variants[i-1] = plainModel(ModelTemplates.CUBE_COLUMN.create(
                     Identifier.fromNamespaceAndPath(RedwoodForests.MODID, "block/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + i),
                     ModTextureMapping.randomLogColumn(block, i),
                     ModBlockModelGenerators.this.modelOutput));
