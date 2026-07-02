@@ -23,7 +23,7 @@ public class ModBlockModelGenerators extends BlockModelGenerators {
         super(blockStateOutput, itemModelOutput, modelOutput);
     }
 
-    public static MultiVariant createRandomVariants(Variant[] variants){
+    public static MultiVariant createRandomVariants(Variant... variants){
         return variants(variants);
     }
 
@@ -35,8 +35,24 @@ public class ModBlockModelGenerators extends BlockModelGenerators {
                     ModTextureMapping.randomLogColumn(block, i),
                     ModBlockModelGenerators.this.modelOutput));
         }
-
         this.blockStateOutput.accept(createAxisAlignedPillarBlock(block, createRandomVariants(variants)));
+        this.registerSimpleItemModel(block, Identifier.fromNamespaceAndPath(RedwoodForests.MODID, "block/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_1"));
+    }
+
+    public void createHorizontalVariatedLogBlock(Block block, int numSides){
+        Variant[] variants = new Variant[numSides];
+        Variant[] horizontalVariants = new Variant[numSides];
+        for (int i = 1; i <= numSides; i++){
+            variants[i-1] = plainModel(ModelTemplates.CUBE_COLUMN.create(
+                    Identifier.fromNamespaceAndPath(RedwoodForests.MODID, "block/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + i),
+                    ModTextureMapping.randomLogColumn(block, i),
+                    ModBlockModelGenerators.this.modelOutput));
+            horizontalVariants[i-1] = plainModel(ModelTemplates.CUBE_COLUMN_HORIZONTAL.create(
+                    Identifier.fromNamespaceAndPath(RedwoodForests.MODID, "block/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_horizontal_" + i),
+                    ModTextureMapping.randomLogColumn(block, i),
+                    ModBlockModelGenerators.this.modelOutput));
+        }
+        this.blockStateOutput.accept(createRotatedPillarWithHorizontalVariant(block, createRandomVariants(variants), createRandomVariants(horizontalVariants)));
         this.registerSimpleItemModel(block, Identifier.fromNamespaceAndPath(RedwoodForests.MODID, "block/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_1"));
     }
 }
