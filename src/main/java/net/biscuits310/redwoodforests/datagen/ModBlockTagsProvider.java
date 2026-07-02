@@ -56,10 +56,17 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.REDWOOD_PLANKS.get())
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.get())
                 .add(ModBlocks.REDWOOD_WOOD.get())
-                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.get());
+                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.get())
+                .add(ModBlocks.REDWOOD_STAIRS.get());
 
         tag(BlockTags.PLANKS)
                 .add(ModBlocks.REDWOOD_PLANKS.get());
+
+        tag(BlockTags.STAIRS)
+                .add(ModBlocks.REDWOOD_STAIRS.get());
+
+        tag(BlockTags.WOODEN_STAIRS)
+                .add(ModBlocks.REDWOOD_STAIRS.get());
 
         tag(Tags.Blocks.STRIPPED_LOGS)
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.get());

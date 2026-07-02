@@ -8,6 +8,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -54,6 +55,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("AA")
                 .unlockedBy(getHasName(ModBlocks.STRIPPED_REDWOOD_LOG.get()), has(ModBlocks.STRIPPED_REDWOOD_LOG))
                 .group("stripped_redwood_wood")
+                .save(output);
+
+        stairBuilder(ModBlocks.REDWOOD_STAIRS.get(), Ingredient.of(ModBlocks.REDWOOD_STAIRS))
+                .unlockedBy(getHasName(ModBlocks.REDWOOD_PLANKS.get()), has(ModBlocks.REDWOOD_PLANKS))
+                .group("redwood_stairs")
                 .save(output);
     }
 }
