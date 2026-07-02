@@ -4,10 +4,7 @@ import net.biscuits310.redwoodforests.RedwoodForests;
 import net.biscuits310.redwoodforests.block.custom.ModLogBlock;
 import net.biscuits310.redwoodforests.item.ModItems;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
@@ -51,6 +48,11 @@ public class ModBlocks
     public static final DeferredBlock<Block> REDWOOD_STAIRS = registerBlock("redwood_stairs",
             properties -> new StairBlock(ModBlocks.REDWOOD_PLANKS.get().defaultBlockState(),
                     properties.strength(3f)
+                    .mapColor(MapColor.WOOD)
+                    .sound(SoundType.WOOD)
+                    .ignitedByLava()));
+    public static final DeferredBlock<Block> REDWOOD_SLAB = registerBlock("redwood_slab",
+            properties -> new SlabBlock(properties.strength(3f)
                     .mapColor(MapColor.WOOD)
                     .sound(SoundType.WOOD)
                     .ignitedByLava()));

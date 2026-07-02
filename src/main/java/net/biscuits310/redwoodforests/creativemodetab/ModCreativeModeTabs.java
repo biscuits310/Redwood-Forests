@@ -31,6 +31,7 @@ public class ModCreativeModeTabs
                         output.accept(ModBlocks.REDWOOD_WOOD);
                         output.accept(ModBlocks.STRIPPED_REDWOOD_WOOD);
                         output.accept(ModBlocks.REDWOOD_STAIRS);
+                        output.accept(ModBlocks.REDWOOD_SLAB);
                     })
                     .build());
 

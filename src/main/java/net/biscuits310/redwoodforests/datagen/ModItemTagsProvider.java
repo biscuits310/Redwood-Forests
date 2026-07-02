@@ -46,6 +46,12 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.WOODEN_STAIRS)
                 .add(ModBlocks.REDWOOD_STAIRS.asItem());
 
+        tag(ItemTags.SLABS)
+                .add(ModBlocks.REDWOOD_SLAB.asItem());
+
+        tag(ItemTags.WOODEN_SLABS)
+                .add(ModBlocks.REDWOOD_SLAB.asItem());
+
         tag(Tags.Items.STRIPPED_LOGS)
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem());
 

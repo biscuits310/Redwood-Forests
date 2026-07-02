@@ -61,5 +61,10 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModBlocks.REDWOOD_PLANKS.get()), has(ModBlocks.REDWOOD_PLANKS))
                 .group("redwood_stairs")
                 .save(output);
+
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.REDWOOD_SLAB.get(), Ingredient.of(ModBlocks.REDWOOD_SLAB))
+                .unlockedBy(getHasName(ModBlocks.REDWOOD_PLANKS.get()), has(ModBlocks.REDWOOD_PLANKS))
+                .group("redwood_slab")
+                .save(output);
     }
 }

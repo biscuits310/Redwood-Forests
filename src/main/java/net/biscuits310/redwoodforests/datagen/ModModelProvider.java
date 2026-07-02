@@ -35,6 +35,7 @@ public class ModModelProvider extends ModelProvider
         blockModels.woodProvider(ModBlocks.STRIPPED_REDWOOD_LOG.get()).logWithHorizontal(ModBlocks.STRIPPED_REDWOOD_LOG.get()).wood(ModBlocks.STRIPPED_REDWOOD_WOOD.get());
 
         blockModels.family(ModBlocks.REDWOOD_PLANKS.get())
-                .stairs(ModBlocks.REDWOOD_STAIRS.get());
+                .stairs(ModBlocks.REDWOOD_STAIRS.get())
+                .slab(ModBlocks.REDWOOD_SLAB.get());
     }
 }

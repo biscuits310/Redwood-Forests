@@ -24,6 +24,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.REDWOOD_WOOD.get());
         dropSelf(ModBlocks.STRIPPED_REDWOOD_WOOD.get());
         dropSelf(ModBlocks.REDWOOD_STAIRS.get());
+        add(ModBlocks.REDWOOD_SLAB.get(), this::createSlabItemTable);
     }
 
     @Override
