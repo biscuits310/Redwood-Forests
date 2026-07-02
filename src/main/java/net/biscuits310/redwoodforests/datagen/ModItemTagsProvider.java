@@ -27,21 +27,28 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.COMPLETES_FIND_TREE_TUTORIAL)
                 .add(ModBlocks.REDWOOD_LOG.asItem())
-                .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem());
+                .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem())
+                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.asItem());
 
         tag(ItemTags.LOGS)
                 .add(ModBlocks.REDWOOD_LOG.asItem())
-                .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem());
+                .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem())
+                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.asItem());
 
         tag(ItemTags.LOGS_THAT_BURN)
                 .add(ModBlocks.REDWOOD_LOG.asItem())
-                .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem());
+                .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem())
+                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.asItem());
 
         tag(Tags.Items.STRIPPED_LOGS)
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem());
 
+        tag(Tags.Items.STRIPPED_WOODS)
+                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.asItem());
+
         tag(ModTags.Items.REDWOOD_LOGS)
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem())
-                .add(ModBlocks.REDWOOD_LOG.asItem());
+                .add(ModBlocks.REDWOOD_LOG.asItem())
+                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.asItem());
     }
 }

@@ -55,4 +55,16 @@ public class ModBlockModelGenerators extends BlockModelGenerators {
         this.blockStateOutput.accept(createRotatedPillarWithHorizontalVariant(block, createRandomVariants(variants), createRandomVariants(horizontalVariants)));
         this.registerSimpleItemModel(block, Identifier.fromNamespaceAndPath(RedwoodForests.MODID, "block/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_1"));
     }
+
+    public void createVariatedWoodBlock(Block block, Block logBlock, int numSides){
+        Variant[] variants = new Variant[numSides];
+        for (int i = 1; i <= numSides; i++){
+            variants[i-1] = plainModel(ModelTemplates.CUBE_COLUMN.create(
+                    Identifier.fromNamespaceAndPath(RedwoodForests.MODID, "block/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + i),
+                    ModTextureMapping.randomLogColumn(logBlock, i).copyAndUpdate(TextureSlot.END, ModTextureMapping.randomLogColumn(logBlock, i).get(TextureSlot.SIDE)),
+                    ModBlockModelGenerators.this.modelOutput));
+        }
+        this.blockStateOutput.accept(BlockModelGenerators.createAxisAlignedPillarBlock(block, createRandomVariants(variants)));
+        this.registerSimpleItemModel(block, Identifier.fromNamespaceAndPath(RedwoodForests.MODID, "block/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_1"));
+    }
 }

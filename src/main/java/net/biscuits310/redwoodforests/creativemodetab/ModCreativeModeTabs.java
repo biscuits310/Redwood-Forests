@@ -28,6 +28,8 @@ public class ModCreativeModeTabs
                         output.accept(ModBlocks.REDWOOD_PLANKS);
                         output.accept(ModBlocks.REDWOOD_LOG);
                         output.accept(ModBlocks.STRIPPED_REDWOOD_LOG);
+                        output.accept(ModBlocks.REDWOOD_WOOD);
+                        output.accept(ModBlocks.STRIPPED_REDWOOD_WOOD);
                     })
                     .build());
 

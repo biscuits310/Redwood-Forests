@@ -39,5 +39,21 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModBlocks.REDWOOD_LOG.get()), has(ModTags.Items.REDWOOD_LOGS))
                 .group("redwood_planks")
                 .save(output);
+
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.REDWOOD_WOOD.get(), 3)
+                .define('A', ModBlocks.REDWOOD_LOG.asItem())
+                .pattern("AA")
+                .pattern("AA")
+                .unlockedBy(getHasName(ModBlocks.REDWOOD_LOG.get()), has(ModBlocks.REDWOOD_LOG))
+                .group("redwood_wood")
+                .save(output);
+
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_REDWOOD_WOOD.get(), 3)
+                .define('A', ModBlocks.STRIPPED_REDWOOD_LOG.asItem())
+                .pattern("AA")
+                .pattern("AA")
+                .unlockedBy(getHasName(ModBlocks.STRIPPED_REDWOOD_LOG.get()), has(ModBlocks.STRIPPED_REDWOOD_LOG))
+                .group("stripped_redwood_wood")
+                .save(output);
     }
 }

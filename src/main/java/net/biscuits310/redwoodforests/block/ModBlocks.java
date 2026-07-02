@@ -31,7 +31,18 @@ public class ModBlocks
                     .sound(SoundType.WOOD)
                     .ignitedByLava(),
                     ModBlocks.STRIPPED_REDWOOD_LOG));
+    public static final DeferredBlock<Block> REDWOOD_WOOD = registerBlock("redwood_wood",
+            properties -> new ModLogBlock(properties.strength(3f)
+                    .mapColor(MapColor.WOOD)
+                    .sound(SoundType.WOOD)
+                    .ignitedByLava(),
+                    ModBlocks.STRIPPED_REDWOOD_WOOD));
     public static final DeferredBlock<Block> STRIPPED_REDWOOD_LOG = registerBlock("stripped_redwood_log",
+            properties -> new RotatedPillarBlock(properties.strength(3f)
+                    .mapColor(MapColor.WOOD)
+                    .sound(SoundType.WOOD)
+                    .ignitedByLava()));
+    public static final DeferredBlock<Block> STRIPPED_REDWOOD_WOOD = registerBlock("stripped_redwood_wood",
             properties -> new RotatedPillarBlock(properties.strength(3f)
                     .mapColor(MapColor.WOOD)
                     .sound(SoundType.WOOD)

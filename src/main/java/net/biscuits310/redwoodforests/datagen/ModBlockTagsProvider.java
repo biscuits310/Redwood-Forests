@@ -26,26 +26,37 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.LOGS_THAT_BURN)
                 .add(ModBlocks.REDWOOD_LOG.get())
-                .add(ModBlocks.STRIPPED_REDWOOD_LOG.get());
+                .add(ModBlocks.STRIPPED_REDWOOD_LOG.get())
+                .add(ModBlocks.REDWOOD_WOOD.get())
+                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.get());
 
         tag(BlockTags.LAVA_POOL_STONE_CANNOT_REPLACE)
                 .add(ModBlocks.REDWOOD_LOG.get())
-                .add(ModBlocks.STRIPPED_REDWOOD_LOG.get());
+                .add(ModBlocks.STRIPPED_REDWOOD_LOG.get())
+                .add(ModBlocks.REDWOOD_WOOD.get())
+                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.get());
 
         tag(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)
-                .add(ModBlocks.REDWOOD_LOG.get());
+                .add(ModBlocks.REDWOOD_LOG.get())
+                .add(ModBlocks.REDWOOD_WOOD.get());
 
         tag(BlockTags.PARROTS_SPAWNABLE_ON)
-                .add(ModBlocks.REDWOOD_LOG.get());
+                .add(ModBlocks.REDWOOD_LOG.get())
+                .add(ModBlocks.REDWOOD_WOOD.get())
+                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.get());
 
         tag(BlockTags.LOGS)
                 .add(ModBlocks.REDWOOD_LOG.get())
-                .add(ModBlocks.STRIPPED_REDWOOD_LOG.get());
+                .add(ModBlocks.STRIPPED_REDWOOD_LOG.get())
+                .add(ModBlocks.REDWOOD_WOOD.get())
+                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.get());
 
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.REDWOOD_LOG.get())
                 .add(ModBlocks.REDWOOD_PLANKS.get())
-                .add(ModBlocks.STRIPPED_REDWOOD_LOG.get());
+                .add(ModBlocks.STRIPPED_REDWOOD_LOG.get())
+                .add(ModBlocks.REDWOOD_WOOD.get())
+                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.get());
 
         tag(BlockTags.PLANKS)
                 .add(ModBlocks.REDWOOD_PLANKS.get());
@@ -53,8 +64,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(Tags.Blocks.STRIPPED_LOGS)
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.get());
 
+        tag(Tags.Blocks.STRIPPED_WOODS)
+                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.get());
+
         tag(Tags.Blocks.NATURAL_LOGS)
-                .add(ModBlocks.REDWOOD_LOG.get());
+                .add(ModBlocks.REDWOOD_LOG.get())
+                .add(ModBlocks.REDWOOD_WOOD.get());
 
         tag(Tags.Blocks.OVERWORLD_NATURAL_LOGS)
                 .add(ModBlocks.REDWOOD_LOG.get());

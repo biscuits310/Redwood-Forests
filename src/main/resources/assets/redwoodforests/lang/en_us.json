@@ -5,6 +5,8 @@
   "block.redwoodforests.redwood_planks": "Redwood Planks",
   "block.redwoodforests.redwood_log": "Redwood Log",
   "block.redwoodforests.stripped_redwood_log": "Stripped Redwood Log",
+  "block.redwoodforests.redwood_wood": "Redwood Wood",
+  "block.redwoodforests.stripped_redwood_wood": "Stripped Redwood Wood",
 
   "creativetab.redwoodforests.redwood_forests": "Redwood Forests"
 }
