@@ -56,6 +56,11 @@ public class ModBlocks
                     .mapColor(MapColor.WOOD)
                     .sound(SoundType.WOOD)
                     .ignitedByLava()));
+    public static final DeferredBlock<Block> REDWOOD_FENCE = registerBlock("redwood_fence",
+            properties -> new FenceBlock(properties.strength(3f)
+                    .mapColor(MapColor.WOOD)
+                    .sound(SoundType.WOOD)
+                    .ignitedByLava()));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> function)
     {

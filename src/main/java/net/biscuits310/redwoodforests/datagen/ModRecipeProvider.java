@@ -57,14 +57,16 @@ public class ModRecipeProvider extends RecipeProvider {
                 .group("stripped_redwood_wood")
                 .save(output);
 
-        stairBuilder(ModBlocks.REDWOOD_STAIRS.get(), Ingredient.of(ModBlocks.REDWOOD_STAIRS))
+        stairBuilder(ModBlocks.REDWOOD_STAIRS.get(), Ingredient.of(ModBlocks.REDWOOD_PLANKS))
                 .unlockedBy(getHasName(ModBlocks.REDWOOD_PLANKS.get()), has(ModBlocks.REDWOOD_PLANKS))
-                .group("redwood_stairs")
                 .save(output);
 
-        slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.REDWOOD_SLAB.get(), Ingredient.of(ModBlocks.REDWOOD_SLAB))
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.REDWOOD_SLAB.get(), Ingredient.of(ModBlocks.REDWOOD_PLANKS))
                 .unlockedBy(getHasName(ModBlocks.REDWOOD_PLANKS.get()), has(ModBlocks.REDWOOD_PLANKS))
-                .group("redwood_slab")
+                .save(output);
+
+        fenceBuilder(ModBlocks.REDWOOD_FENCE.get(), Ingredient.of(ModBlocks.REDWOOD_PLANKS))
+                .unlockedBy(getHasName(ModBlocks.REDWOOD_PLANKS.get()), has(ModBlocks.REDWOOD_PLANKS))
                 .save(output);
     }
 }

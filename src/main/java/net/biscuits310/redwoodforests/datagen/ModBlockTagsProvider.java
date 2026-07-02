@@ -58,7 +58,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.REDWOOD_WOOD.get())
                 .add(ModBlocks.STRIPPED_REDWOOD_WOOD.get())
                 .add(ModBlocks.REDWOOD_STAIRS.get())
-                .add(ModBlocks.REDWOOD_SLAB.get());
+                .add(ModBlocks.REDWOOD_SLAB.get())
+                .add(ModBlocks.REDWOOD_FENCE.get());
 
         tag(BlockTags.PLANKS)
                 .add(ModBlocks.REDWOOD_PLANKS.get());
@@ -75,6 +76,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.WOODEN_SLABS)
                 .add(ModBlocks.REDWOOD_SLAB.get());
 
+        tag(BlockTags.WOODEN_FENCES)
+                .add(ModBlocks.REDWOOD_FENCE.get());
+
+        tag(BlockTags.FENCES)
+                .add(ModBlocks.REDWOOD_FENCE.get());
+
         tag(Tags.Blocks.STRIPPED_LOGS)
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.get());
 
@@ -87,5 +94,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(Tags.Blocks.OVERWORLD_NATURAL_LOGS)
                 .add(ModBlocks.REDWOOD_LOG.get());
+
+        tag(Tags.Blocks.FENCES_WOODEN)
+                .add(ModBlocks.REDWOOD_FENCE.get());
     }
 }

@@ -36,6 +36,7 @@ public class ModModelProvider extends ModelProvider
 
         blockModels.family(ModBlocks.REDWOOD_PLANKS.get())
                 .stairs(ModBlocks.REDWOOD_STAIRS.get())
-                .slab(ModBlocks.REDWOOD_SLAB.get());
+                .slab(ModBlocks.REDWOOD_SLAB.get())
+                .fence(ModBlocks.REDWOOD_FENCE.get());
     }
 }

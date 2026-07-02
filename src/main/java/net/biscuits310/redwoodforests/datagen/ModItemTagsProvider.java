@@ -52,11 +52,23 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.WOODEN_SLABS)
                 .add(ModBlocks.REDWOOD_SLAB.asItem());
 
+        tag(ItemTags.FENCES)
+                .add(ModBlocks.REDWOOD_FENCE.asItem());
+
+        tag(ItemTags.WOODEN_FENCES)
+                .add(ModBlocks.REDWOOD_FENCE.asItem());
+
         tag(Tags.Items.STRIPPED_LOGS)
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem());
 
         tag(Tags.Items.STRIPPED_WOODS)
                 .add(ModBlocks.STRIPPED_REDWOOD_WOOD.asItem());
+
+        tag(Tags.Items.FENCES)
+                .add(ModBlocks.REDWOOD_FENCE.asItem());
+
+        tag(Tags.Items.FENCES_WOODEN)
+                .add(ModBlocks.REDWOOD_FENCE.asItem());
 
         tag(ModTags.Items.REDWOOD_LOGS)
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem())
