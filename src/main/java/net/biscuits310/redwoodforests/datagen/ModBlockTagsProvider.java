@@ -34,16 +34,19 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.REDWOOD_LOG.get())
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.get())
                 .add(ModBlocks.REDWOOD_WOOD.get())
-                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.get());
+                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.get())
+                .add(ModBlocks.REDWOOD_LEAVES.get());
 
         tag(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)
                 .add(ModBlocks.REDWOOD_LOG.get())
-                .add(ModBlocks.REDWOOD_WOOD.get());
+                .add(ModBlocks.REDWOOD_WOOD.get())
+                .add(ModBlocks.REDWOOD_LEAVES.get());
 
         tag(BlockTags.PARROTS_SPAWNABLE_ON)
                 .add(ModBlocks.REDWOOD_LOG.get())
                 .add(ModBlocks.REDWOOD_WOOD.get())
-                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.get());
+                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.get())
+                .add(ModBlocks.REDWOOD_LEAVES.get());
 
         tag(BlockTags.LOGS)
                 .add(ModBlocks.REDWOOD_LOG.get())
@@ -81,6 +84,21 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.FENCES)
                 .add(ModBlocks.REDWOOD_FENCE.get());
+
+        tag(BlockTags.SWORD_EFFICIENT)
+                .add(ModBlocks.REDWOOD_LEAVES.get());
+
+        tag(BlockTags.REPLACEABLE_BY_TREES)
+                .add(ModBlocks.REDWOOD_LEAVES.get());
+
+        tag(BlockTags.MINEABLE_WITH_HOE)
+                .add(ModBlocks.REDWOOD_LEAVES.get());
+
+        tag(BlockTags.LEAVES)
+                .add(ModBlocks.REDWOOD_LEAVES.get());
+
+        tag(BlockTags.REPLACEABLE_BY_MUSHROOMS)
+                .add(ModBlocks.REDWOOD_LEAVES.get());
 
         tag(Tags.Blocks.STRIPPED_LOGS)
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.get());

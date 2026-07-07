@@ -38,5 +38,7 @@ public class ModModelProvider extends ModelProvider
                 .stairs(ModBlocks.REDWOOD_STAIRS.get())
                 .slab(ModBlocks.REDWOOD_SLAB.get())
                 .fence(ModBlocks.REDWOOD_FENCE.get());
+
+        blockModels.createTrivialCube(ModBlocks.REDWOOD_LEAVES.get());
     }
 }

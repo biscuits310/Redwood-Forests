@@ -28,7 +28,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.COMPLETES_FIND_TREE_TUTORIAL)
                 .add(ModBlocks.REDWOOD_LOG.asItem())
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem())
-                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.asItem());
+                .add(ModBlocks.STRIPPED_REDWOOD_WOOD.asItem())
+                .add(ModBlocks.REDWOOD_LEAVES.asItem());
 
         tag(ItemTags.LOGS)
                 .add(ModBlocks.REDWOOD_LOG.asItem())
@@ -57,6 +58,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.WOODEN_FENCES)
                 .add(ModBlocks.REDWOOD_FENCE.asItem());
+
+        tag(ItemTags.LEAVES)
+                .add(ModBlocks.REDWOOD_LEAVES.asItem());
 
         tag(Tags.Items.STRIPPED_LOGS)
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem());
