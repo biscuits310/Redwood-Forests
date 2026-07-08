@@ -40,5 +40,7 @@ public class ModModelProvider extends ModelProvider
                 .fence(ModBlocks.REDWOOD_FENCE.get());
 
         blockModels.createTrivialCube(ModBlocks.REDWOOD_LEAVES.get());
+        blockModels.createPlantWithDefaultItem(ModBlocks.REDWOOD_SAPLING.get(), ModBlocks.POTTED_REDWOOD_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+
     }
 }

@@ -34,6 +34,7 @@ public class ModCreativeModeTabs
                         output.accept(ModBlocks.REDWOOD_SLAB);
                         output.accept(ModBlocks.REDWOOD_FENCE);
                         output.accept(ModBlocks.REDWOOD_LEAVES);
+                        output.accept(ModBlocks.REDWOOD_SAPLING);
                     })
                     .build());
 

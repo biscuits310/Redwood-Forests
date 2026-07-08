@@ -27,6 +27,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.REDWOOD_SLAB.get(), this::createSlabItemTable);
         dropSelf(ModBlocks.REDWOOD_FENCE.get());
         add(ModBlocks.REDWOOD_LEAVES.get(), createLeavesDrops(ModBlocks.REDWOOD_LEAVES.get(), ModBlocks.REDWOOD_PLANKS.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        dropSelf(ModBlocks.REDWOOD_SAPLING.get());
+        dropPottedContents(ModBlocks.POTTED_REDWOOD_SAPLING.get());
     }
 
     @Override

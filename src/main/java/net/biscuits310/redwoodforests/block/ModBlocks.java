@@ -3,6 +3,7 @@ package net.biscuits310.redwoodforests.block;
 import net.biscuits310.redwoodforests.RedwoodForests;
 import net.biscuits310.redwoodforests.block.custom.ModLogBlock;
 import net.biscuits310.redwoodforests.item.ModItems;
+import net.biscuits310.redwoodforests.worldgen.tree.ModTreeGrowers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ColorParticleOption;
@@ -10,6 +11,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -200,6 +202,21 @@ public class ModBlocks
                     return 60;
                 }
             });
+
+    public static final DeferredBlock<Block> REDWOOD_SAPLING = registerBlock("redwood_sapling",
+            properties -> new SaplingBlock(ModTreeGrowers.REDWOOD, properties
+                    .mapColor(MapColor.PLANT)
+                    .noCollision()
+                    .randomTicks()
+                    .instabreak()
+                    .sound(SoundType.GRASS)
+                    .pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> POTTED_REDWOOD_SAPLING = registerBlock("potted_redwood_sapling",
+            properties -> new FlowerPotBlock(ModBlocks.REDWOOD_SAPLING.get(), properties
+                    .instabreak()
+                    .noOcclusion()
+                    .pushReaction(PushReaction.DESTROY)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> function)
     {

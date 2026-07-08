@@ -1,6 +1,7 @@
 package net.biscuits310.redwoodforests;
 
 import net.biscuits310.redwoodforests.datagen.*;
+import net.biscuits310.redwoodforests.worldgen.ModConfiguredFeatures;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
@@ -28,6 +29,7 @@ public class RedwoodForestsDataGen
                 List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
         generator.addProvider(true, new ModRecipeProvider.Runner(packOutput,lookupProvider));
         generator.addProvider(true, new ModItemTagsProvider(packOutput, lookupProvider));
+        generator.addProvider(true, new ModDataPackProvider(packOutput, lookupProvider));
     }
 
 }
