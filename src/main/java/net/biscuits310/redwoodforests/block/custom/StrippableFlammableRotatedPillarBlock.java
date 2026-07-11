@@ -1,6 +1,5 @@
 package net.biscuits310.redwoodforests.block.custom;
 
-import net.biscuits310.redwoodforests.block.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -15,23 +14,19 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
 import java.util.function.Supplier;
 
 // Creates a custom flammable, strippable, rotatable pillar block blueprint for DeferredBlocks
-public class ModLogBlock extends RotatedPillarBlock {
+public class StrippableFlammableRotatedPillarBlock extends FlammableRotatedPillarBlock {
     // Initialises a Block supplier called strippedBlock
     private final Supplier<Block> strippedBlock;
 
     // Constructs everything required by the inherited class
     // Assigns the given strippedBlock parameter to the strippedBlock supplier
-    public ModLogBlock(Properties properties, Supplier<Block> strippedBlock) {
-        super(properties);
+    public StrippableFlammableRotatedPillarBlock(int flammability, int fireSpreadSpeed, Supplier<Block> strippedBlock, Properties properties) {
+        super(flammability, fireSpreadSpeed, properties);
         this.strippedBlock = strippedBlock;
     }
 
@@ -64,23 +59,5 @@ public class ModLogBlock extends RotatedPillarBlock {
         }
         // Return a pass, which stops any animations from playing
         return InteractionResult.PASS;
-    }
-
-    // Set flammability to true
-    @Override
-    public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        return true;
-    }
-
-    // Set the flammability to 5
-    @Override
-    public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        return 5;
-    }
-
-    // Set the speed fire spreads to 20
-    @Override
-    public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        return 20;
     }
 }

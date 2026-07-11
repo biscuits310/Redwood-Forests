@@ -1,7 +1,7 @@
 package net.biscuits310.redwoodforests.block;
 
 import net.biscuits310.redwoodforests.RedwoodForests;
-import net.biscuits310.redwoodforests.block.custom.ModLogBlock;
+import net.biscuits310.redwoodforests.block.custom.*;
 import net.biscuits310.redwoodforests.item.ModItems;
 import net.biscuits310.redwoodforests.worldgen.tree.ModTreeGrowers;
 import net.minecraft.core.BlockPos;
@@ -11,7 +11,6 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -38,177 +37,91 @@ public class ModBlocks
     // Creates the redwood planks block as a DeferredBlock
     public static final DeferredBlock<Block> REDWOOD_PLANKS = registerBlock("redwood_planks",
             // Sets the properties for a plank block, and creates it using the Block class
-            properties -> new Block(properties
+            properties -> new FlammableBlock(5, 20, properties
                     .mapColor(MapColor.WOOD)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F, 3.0F)
                     .sound(SoundType.WOOD)
-                    .ignitedByLava()){
-                // Overrides the Block class's methods to set the flammability and fire spread speed
-                @Override
-                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return true;
-                }
-                @Override
-                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 5;
-                }
-                @Override
-                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 20;
-                }
-            });
+                    .ignitedByLava()));
 
     // Creates the redwood log block as a DeferredBlock
     public static final DeferredBlock<Block> REDWOOD_LOG = registerBlock("redwood_log",
-            // Sets the properties for a log block, and creates it using the ModLogBlock class
-            properties -> new ModLogBlock(properties
-                    .mapColor(state -> state.getValue(ModLogBlock.AXIS) == Direction.Axis.Y ? MapColor.WOOD : MapColor.PODZOL)
+            // Sets the properties for a log block, and creates it using the StrippableFlammableRotatedPillarBlock class
+            properties -> new StrippableFlammableRotatedPillarBlock(5, 5, ModBlocks.STRIPPED_REDWOOD_LOG, properties
+                    .mapColor(state -> state.getValue(StrippableFlammableRotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.WOOD : MapColor.PODZOL)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F)
                     .sound(SoundType.WOOD)
-                    .ignitedByLava(),
-                    ModBlocks.STRIPPED_REDWOOD_LOG));
-                // Flammability does not need to be overriden as it is included as default in ModLogBlock
+                    .ignitedByLava()));
 
     // Creates the redwood wood block as a DeferredBlock
     public static final DeferredBlock<Block> REDWOOD_WOOD = registerBlock("redwood_wood",
-            // Sets the properties for a wood block, and creates it using the ModWoodBlock class
-            properties -> new ModLogBlock(properties
+            // Sets the properties for a wood block, and creates it using the StrippableFlammableRotatedPillarBlock class
+            properties -> new StrippableFlammableRotatedPillarBlock(5, 5, ModBlocks.STRIPPED_REDWOOD_WOOD, properties
                     .mapColor(MapColor.PODZOL)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F)
                     .sound(SoundType.WOOD)
-                    .ignitedByLava(),
-                    ModBlocks.STRIPPED_REDWOOD_WOOD));
+                    .ignitedByLava()));
                 // Flammability does not need to be overriden
 
     // Creates a stripped redwood log block as a DeferredBlock
     public static final DeferredBlock<Block> STRIPPED_REDWOOD_LOG = registerBlock("stripped_redwood_log",
-            // Sets the properties for a stripped log block, and creates it using the RotatedPillarBlock class
-            // Uses RotatedPillarBlock instead of ModLogBlock as stripping functionality is not required
-            properties -> new RotatedPillarBlock(properties
+            // Sets the properties for a stripped log block, and creates it using the FlammableRotatedPillarBlock class
+            // Uses FlammableRotatedPillarBlock instead of StrippableFlammableRotatedPillarBlock as stripping functionality is not required
+            properties -> new FlammableRotatedPillarBlock(5, 5, properties
                     .mapColor(MapColor.PODZOL)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F)
                     .sound(SoundType.WOOD)
-                    .ignitedByLava()){
-                // Overrides the RotatedPillarBlock class's methods to set the flammability and fire spread speed
-                @Override
-                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return true;
-                }
-                @Override
-                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 5;
-                }
-                @Override
-                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 5;
-                }
-            });
+                    .ignitedByLava()));
 
     // Creats a stripped redwood wood block as a DeferredBlock
     public static final DeferredBlock<Block> STRIPPED_REDWOOD_WOOD = registerBlock("stripped_redwood_wood",
-            // Sets the properties of a stripped wood block, and creates it using the RotatedPillarBlock class
-            properties -> new RotatedPillarBlock(properties
+            // Sets the properties of a stripped wood block, and creates it using the FlammableRotatedPillarBlock class
+            properties -> new FlammableRotatedPillarBlock(5, 5, properties
                     .mapColor(MapColor.WOOD)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F)
                     .sound(SoundType.WOOD)
-                    .ignitedByLava()){
-                // Overrides the RotatedPillarBlock class's methods to set the flammability and fire spread speed
-                @Override
-                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return true;
-                }
-                @Override
-                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 5;
-                }
-                @Override
-                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 5;
-                }
-            });
+                    .ignitedByLava()));
 
     // Creates a redwood stairs block as a DeferredBlock
     public static final DeferredBlock<Block> REDWOOD_STAIRS = registerBlock("redwood_stairs",
             // Sets the properties of a wooden stair block, and creates it using the StairBlock class
             // Also inputs redwood planks, to define further properties
-            properties -> new StairBlock(ModBlocks.REDWOOD_PLANKS.get().defaultBlockState(), properties
+            properties -> new FlammableStairBlock(ModBlocks.REDWOOD_PLANKS.get().defaultBlockState(), 5, 20, properties
                     .mapColor(MapColor.WOOD)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F, 3.0F)
                     .sound(SoundType.WOOD)
-                    .ignitedByLava()){
-                // Overrides the StairBlock class's methods to set the flammability and fire spread speed
-                @Override
-                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return true;
-                }
-                @Override
-                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 5;
-                }
-                @Override
-                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 20;
-                }
-            });
+                    .ignitedByLava()));
 
     // Creates a redwood slab block as a DeferredBlock
     public static final DeferredBlock<Block> REDWOOD_SLAB = registerBlock("redwood_slab",
             // Sets the properties of a wooden slab block, and creates it using the SlabBlock class
-            properties -> new SlabBlock(properties
+            properties -> new FlammableSlabBlock(5, 20, properties
                     .mapColor(MapColor.WOOD)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F, 3.0F)
                     .sound(SoundType.WOOD)
-                    .ignitedByLava()){
-                // Overrides the SlabBlock class's methods to set the flammability and fire spread speed
-                @Override
-                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return true;
-                }
-                @Override
-                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 5;
-                }
-                @Override
-                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 20;
-                }
-            });
+                    .ignitedByLava()));
 
     // Creates a redwood fence block as a DeferredBlock
     public static final DeferredBlock<Block> REDWOOD_FENCE = registerBlock("redwood_fence",
             // Sets the properties of a wooden fence, and creates it using the FenceBlock class
-            properties -> new FenceBlock(properties
+            properties -> new FlammableFenceBlock(5, 20, properties
                     .mapColor(MapColor.WOOD)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F, 3.0F)
                     .sound(SoundType.WOOD)
-                    .ignitedByLava()){
-                // Overrides the FenceBlock class's methods to set the flammability and fire spread speed
-                @Override
-                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return true;
-                }
-                @Override
-                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 5;
-                }
-                @Override
-                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 20;
-                }
-            });
+                    .ignitedByLava())
+);
 
     // Creates a redwood leaves block as a DeferredBlock
     public static final DeferredBlock<Block> REDWOOD_LEAVES = registerBlock("redwood_leaves",
             // Sets the properties of a non-tinted leaves block, and creates it using the UntintedParticleLeavesBlock class
-            properties -> new UntintedParticleLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, -9399763),properties
+            properties -> new FlammableUntintedParticleLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES,  -9399763), 30, 60, properties
                     .mapColor(MapColor.PLANT)
                     .strength(0.2F)
                     .randomTicks()
@@ -219,21 +132,7 @@ public class ModBlocks
                     .isViewBlocking(ModBlocks::never)
                     .ignitedByLava()
                     .pushReaction(PushReaction.DESTROY)
-                    .isRedstoneConductor(ModBlocks::never)){
-                // Overrides the UntintedParticleLeavesBlock class's methods to set the flammability and fire spread speed
-                @Override
-                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return true;
-                }
-                @Override
-                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 30;
-                }
-                @Override
-                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 60;
-                }
-            });
+                    .isRedstoneConductor(ModBlocks::never)));
 
     // Creates a redwood sapling block as a DeferredBlock
     public static final DeferredBlock<Block> REDWOOD_SAPLING = registerBlock("redwood_sapling",
@@ -245,7 +144,6 @@ public class ModBlocks
                     .randomTicks()
                     .instabreak()
                     .sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
-                // Does not override anything as saplings are not flammable
 
     // Creates a potted redwood sapling block for use in a flower pot
     public static final DeferredBlock<Block> POTTED_REDWOOD_SAPLING = registerBlock("potted_redwood_sapling",
@@ -277,9 +175,3 @@ public class ModBlocks
         BLOCKS.register(eventBus);
     }
 }
-
-
-
-
-
-
