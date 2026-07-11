@@ -8,17 +8,23 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
+// Creates custom tags for recipes and other uses within my mod
 public class ModTags {
+    // A subclass for creating block tags
     public static class Blocks {
 
+        // Creates a block tag using the given name and the mod id
         private static TagKey<Block> createTag(String name){
             return BlockTags.create(Identifier.fromNamespaceAndPath(RedwoodForests.MODID, name));
         }
     }
 
+    // A subclass for creating item tags
     public static class Items{
+        // Create an item tag called "redwood_logs" for the redwood planks recipe
         public static final TagKey<Item> REDWOOD_LOGS = createTag("redwood_logs");
 
+        // Creates an item tag using the given name and the mod id
         private static TagKey<Item> createTag(String name){
             return ItemTags.create(Identifier.fromNamespaceAndPath(RedwoodForests.MODID, name));
         }

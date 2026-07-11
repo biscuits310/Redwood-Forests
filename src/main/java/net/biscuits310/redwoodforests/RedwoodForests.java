@@ -50,11 +50,11 @@ public class RedwoodForests {
     public RedwoodForests(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
+        // Register creative mode tabs
         ModCreativeModeTabs.register(modEventBus);
-
+        // Register items
         ModItems.register(modEventBus);
-
+        // Register blocks
         ModBlocks.register(modEventBus);
 
 
@@ -71,9 +71,11 @@ public class RedwoodForests {
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
+    // UNUSED commonsetup
     private void commonSetup(FMLCommonSetupEvent event) {
     }
 
+    // UNUSED for adding items to vanilla creative mode tabs
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
     }

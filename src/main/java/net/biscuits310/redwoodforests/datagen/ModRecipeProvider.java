@@ -12,60 +12,107 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.concurrent.CompletableFuture;
 
+// Creates recipes for blocks and items
+// Inherits from the RecipeProvider class
 public class ModRecipeProvider extends RecipeProvider {
+    // Constructs everything required for the inherited class
     protected ModRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
         super(registries, output);
     }
 
+    // A subclass of ModRecipeProvider which creates a provider for all the modded recipes
     public static class Runner extends RecipeProvider.Runner{
+        // Constructs everything required for the inherited class
         public Runner(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> registries) {
             super(packOutput, registries);
         }
 
+        // Overrides createRecipeProvider to create a RecipeProvider with the ModRecipeProvider class
+        // As opposed to the RecipeProvider class
         @Override
         protected RecipeProvider createRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
             return new ModRecipeProvider(registries, output);
         }
 
+        // Changes the name of the provider
         @Override
         public String getName() {
             return "RedwoodForests Recipes";
         }
     }
 
+    // Overrides buildRecipes to create all the modded recipes
     @Override
     protected void buildRecipes() {
+        // Creates a recipe for redwood planks
+        // Keep in the recipe book category building blocks
+        // Give 4 redwood planks
+        // The recipe can be in any shape
         shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.REDWOOD_PLANKS.get(),4)
+                // Requires any item with the redwood logs tag (redwood log, redwood wood, stripped, redwood log etc)
                 .requires(ModTags.Items.REDWOOD_LOGS)
+                // Unlocked in the recipe book like this
                 .unlockedBy(getHasName(ModBlocks.REDWOOD_LOG.get()), has(ModTags.Items.REDWOOD_LOGS))
+                // Keep in the redwood planks group
                 .group("redwood_planks")
                 .save(output);
 
+        // Creates a recipe for redwood wood
+        // Keep in the recipe book category building blocks
+        // Give 3 redwood wood
+        // The recipe must be shaped
         shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.REDWOOD_WOOD.get(), 3)
+                // The character 'A' represents the redwood log item
                 .define('A', ModBlocks.REDWOOD_LOG.asItem())
+                // The crafting table pattern required to craft the redwood log
                 .pattern("AA")
                 .pattern("AA")
+                // Unlocked in the recipe book like this
                 .unlockedBy(getHasName(ModBlocks.REDWOOD_LOG.get()), has(ModBlocks.REDWOOD_LOG))
+                // Keep in the redwood wood group
                 .group("redwood_wood")
                 .save(output);
 
+        // Creates a recipe for stripped redwood wood
+        // Keep in the recipe book category building blocks
+        // Give 3 stripped redwood wood
+        // The recipe must be shaped
         shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_REDWOOD_WOOD.get(), 3)
+                // The character 'A' represents the stripped redwood log item
                 .define('A', ModBlocks.STRIPPED_REDWOOD_LOG.asItem())
+                // The crafting table pattern required to craft the redwood log
                 .pattern("AA")
                 .pattern("AA")
+                // Unlocked in the recipe book like this
                 .unlockedBy(getHasName(ModBlocks.STRIPPED_REDWOOD_LOG.get()), has(ModBlocks.STRIPPED_REDWOOD_LOG))
+                // Keep in the stripped redwood wood group
                 .group("stripped_redwood_wood")
                 .save(output);
 
+        // Create a recipe for redwood stairs
+        // stairBuilder automatically gives the shape and mirrored variants for stairs
+        // Give redwood stairs
+        // Use the redwood planks item as the ingredient
         stairBuilder(ModBlocks.REDWOOD_STAIRS.get(), Ingredient.of(ModBlocks.REDWOOD_PLANKS))
+                // Unlock in the recipe book like this
                 .unlockedBy(getHasName(ModBlocks.REDWOOD_PLANKS.get()), has(ModBlocks.REDWOOD_PLANKS))
                 .save(output);
 
+        // Create a recipe for a redwood slab
+        // slabBuilder automatically gives the shape for a slab
+        // Give redwood slabs
+        // Use the redwood planks item as the ingredient
         slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.REDWOOD_SLAB.get(), Ingredient.of(ModBlocks.REDWOOD_PLANKS))
+                // Unlock in the recipe book like this
                 .unlockedBy(getHasName(ModBlocks.REDWOOD_PLANKS.get()), has(ModBlocks.REDWOOD_PLANKS))
                 .save(output);
 
+        // Create a recipe for a redwood fence
+        // fenceBuilder automatically gives the shape for a fence
+        // Give redwood fence
+        // Use the redwood planks ingredient as the ingredient
         fenceBuilder(ModBlocks.REDWOOD_FENCE.get(), Ingredient.of(ModBlocks.REDWOOD_PLANKS))
+                // Unlock in the recipe book like this
                 .unlockedBy(getHasName(ModBlocks.REDWOOD_PLANKS.get()), has(ModBlocks.REDWOOD_PLANKS))
                 .save(output);
     }

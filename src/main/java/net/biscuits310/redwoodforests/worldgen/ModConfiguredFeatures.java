@@ -8,6 +8,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -16,29 +17,43 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaPineFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 
+// Creates configured features
+// Configured features are arrangements of blocks
 public class ModConfiguredFeatures {
 
+    // Register the redwood key
     public static final ResourceKey<ConfiguredFeature<?, ?>> REDWOOD_KEY = registerKey("redwood_key");
 
+    // Actions to be executed
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context){
-        System.out.println("Configured features bootstrap called");
-
+        // Create the redwood tree configured feature
+        // Use the TreeConfigurationBuilder to create a tree
         register(context, REDWOOD_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                // The block that acts as the log in the tree
                 BlockStateProvider.simple(ModBlocks.REDWOOD_LOG.get()),
-                new ForkingTrunkPlacer(4, 4, 3),
+                // Use GiantTrunkPlacer to make a 2x2 base
+                // Use a height of 32 blocks, and use a randomness of 4 and 3
+                new GiantTrunkPlacer( 32, 4, 3),
+                // The block that acts as the leaves in the tree
                 BlockStateProvider.simple(ModBlocks.REDWOOD_LEAVES.get()),
-                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(3), 3),
-                new TwoLayersFeatureSize(1, 0, 2)).build());
+                // Use MegaPineFoliagePlacer to create a cone leaf shape
+                // Use the default value for radius, no offset, and have a height of 3-7
+                new MegaPineFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0), UniformInt.of(3, 7)),
+                // Used to change thickness at specific points
+                new TwoLayersFeatureSize(1, 1 , 2)).build());
     }
 
+    // Register a configured feature key
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name){
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(RedwoodForests.MODID, name));
     }
 
+    // Used to add features to a key
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<ConfiguredFeature<?, ?>> context,
                                                                                           ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration){
         context.register(key, new ConfiguredFeature<>(feature, configuration));

@@ -6,13 +6,18 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class ModItems
+// Creates DeferredItems and combines them into a DeferredRegister
+public class  ModItems
 {
+    // Combined DeferredItems into a DeferredRegister
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(RedwoodForests.MODID);
 
+    // Creates redwood bark as a simple item, defining the id
     public static final DeferredItem<Item> REDWOOD_BARK = ITEMS.registerSimpleItem("redwood_bark");
+    // Creates charred redwood bark as a simple item, defining the id
     public static final DeferredItem<Item> CHARRED_REDWOOD_BARK = ITEMS.registerSimpleItem("charred_redwood_bark");
 
+    // Registers the ITEMS DeferredRegister using the event bus
     public static void register(IEventBus eventBus)
     {
         ITEMS.register(eventBus);

@@ -12,16 +12,22 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 
 import java.util.List;
 
+// Creates placed features
+// Placed features are configured features given positions
 public class ModPlacedFeatures {
 
+    // Actions to be executed
     public static void bootstrap(BootstrapContext<PlacedFeature> context){
+        // Get the configured features
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
     }
 
+    // Register a placed feature key
     private static ResourceKey<PlacedFeature> registerKey(String name){
         return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(RedwoodForests.MODID, name));
     }
 
+    // Used to add features to a key
     private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration,
                                  List<PlacementModifier> modifiers){
         context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
