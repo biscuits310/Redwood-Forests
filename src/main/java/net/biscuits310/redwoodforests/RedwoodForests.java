@@ -4,6 +4,7 @@ import net.biscuits310.redwoodforests.block.ModBlocks;
 import net.biscuits310.redwoodforests.creativemodetab.ModCreativeModeTabs;
 import net.biscuits310.redwoodforests.datagen.ModDataPackProvider;
 import net.biscuits310.redwoodforests.item.ModItems;
+import net.biscuits310.redwoodforests.worldgen.tree.ModTrunkPlacerType;
 import net.minecraft.data.DataGenerator;
 import org.slf4j.Logger;
 
@@ -56,6 +57,8 @@ public class RedwoodForests {
         ModItems.register(modEventBus);
         // Register blocks
         ModBlocks.register(modEventBus);
+
+        ModTrunkPlacerType.TRUNK_PLACER_TYPES.register(modEventBus);
 
 
 
