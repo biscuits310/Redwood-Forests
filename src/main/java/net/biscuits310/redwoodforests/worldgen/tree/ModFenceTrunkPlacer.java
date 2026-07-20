@@ -21,7 +21,7 @@ import java.util.function.Supplier;
 
 public class ModFenceTrunkPlacer extends TrunkPlacer {
     public static final MapCodec<ModFenceTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(i -> trunkPlacerParts(i)
-            .and(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("fence_block").forGetter(placer -> placer.fenceBlock.get()))
+            .and(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("fence_block").forGetter(p -> p.fenceBlock.get()))
             .and(Codec.floatRange(0F, 1F).fieldOf("fenceProportion").forGetter(p -> p.fenceProportion))
             .apply(i, (baseHeight, heightRandA, heightRandB, fenceBlock, fenceProportion) ->
                     new ModFenceTrunkPlacer(

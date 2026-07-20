@@ -2,6 +2,7 @@ package net.biscuits310.redwoodforests.worldgen;
 
 import net.biscuits310.redwoodforests.RedwoodForests;
 import net.biscuits310.redwoodforests.block.ModBlocks;
+import net.biscuits310.redwoodforests.worldgen.tree.ModConeFoliagePlacer;
 import net.biscuits310.redwoodforests.worldgen.tree.ModFenceTrunkPlacer;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -44,7 +45,7 @@ public class ModConfiguredFeatures {
                 BlockStateProvider.simple(ModBlocks.REDWOOD_LEAVES.get()),
                 // Use MegaPineFoliagePlacer to create a cone leaf shape
                 // Use the default value for radius, no offset, and have a height of 3-7
-                new MegaPineFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), UniformInt.of(2, 2)),
+                new ModConeFoliagePlacer(ConstantInt.of(6), ConstantInt.of(16), ConstantInt.of(20)),
                 // Used to change thickness at specific points
                 new TwoLayersFeatureSize(1, 1 , 2)).build());
     }
