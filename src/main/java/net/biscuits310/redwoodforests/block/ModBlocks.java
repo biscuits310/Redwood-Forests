@@ -47,7 +47,7 @@ public class ModBlocks
     // Creates the redwood log block as a DeferredBlock
     public static final DeferredBlock<Block> REDWOOD_LOG = registerBlock("redwood_log",
             // Sets the properties for a log block, and creates it using the StrippableFlammableRotatedPillarBlock class
-            properties -> new StrippableFlammableRotatedPillarBlock(5, 5, ModBlocks.STRIPPED_REDWOOD_LOG, properties
+            properties -> new RedwoodLogBlock(5, 5, ModBlocks.STRIPPED_REDWOOD_LOG, properties
                     .mapColor(state -> state.getValue(StrippableFlammableRotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.WOOD : MapColor.PODZOL)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F)
@@ -121,7 +121,7 @@ public class ModBlocks
     // Creates a redwood leaves block as a DeferredBlock
     public static final DeferredBlock<Block> REDWOOD_LEAVES = registerBlock("redwood_leaves",
             // Sets the properties of a non-tinted leaves block, and creates it using the UntintedParticleLeavesBlock class
-            properties -> new FlammableUntintedParticleLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES,  -9399763), 30, 60, properties
+            properties -> new RedwoodLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES,  -9399763), 30, 60, properties
                     .mapColor(MapColor.PLANT)
                     .strength(0.2F)
                     .randomTicks()

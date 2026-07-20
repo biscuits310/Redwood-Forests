@@ -44,7 +44,7 @@ public class ModConeFoliagePlacer extends FoliagePlacer {
         int currentRadius;
 
         for (int depth = 1; depth <= foliageHeight; depth++){
-            currentRadius = Mth.floor(depth * leafRadius / (float)foliageHeight);
+            currentRadius = Math.round(depth * leafRadius / (float)foliageHeight);
             this.placeLeavesRow(level, foliageSetter, random, config, foliagePos, currentRadius, -depth+offset, foliageAttachment.doubleTrunk());
         }
     }
