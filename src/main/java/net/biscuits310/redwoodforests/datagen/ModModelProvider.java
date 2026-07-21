@@ -52,6 +52,7 @@ public class ModModelProvider extends ModelProvider
 
         // Create standard cubes for blocks using the blockModels methods
         blockModels.createTrivialCube(ModBlocks.REDWOOD_LEAVES.get());
+        blockModels.createTrivialCube(ModBlocks.DEEP_REDWOOD_LEAVES.get());
         blockModels.createPlantWithDefaultItem(ModBlocks.REDWOOD_SAPLING.get(), ModBlocks.POTTED_REDWOOD_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 
     }

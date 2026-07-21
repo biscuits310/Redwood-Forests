@@ -36,7 +36,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModBlocks.REDWOOD_LOG.asItem())
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.asItem())
                 .add(ModBlocks.STRIPPED_REDWOOD_WOOD.asItem())
-                .add(ModBlocks.REDWOOD_LEAVES.asItem());
+                .add(ModBlocks.REDWOOD_LEAVES.asItem())
+                .add(ModBlocks.DEEP_REDWOOD_LEAVES.asItem());
 
         // Marks an item as a log for crafting recipes
         tag(ItemTags.LOGS)
@@ -76,7 +77,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         // Marks an item as leaves for crafting recipes
         tag(ItemTags.LEAVES)
-                .add(ModBlocks.REDWOOD_LEAVES.asItem());
+                .add(ModBlocks.REDWOOD_LEAVES.asItem())
+                .add(ModBlocks.DEEP_REDWOOD_LEAVES.asItem());
 
         // Marks an item as a stripped log for crafting recipes for other mods
         tag(Tags.Items.STRIPPED_LOGS)

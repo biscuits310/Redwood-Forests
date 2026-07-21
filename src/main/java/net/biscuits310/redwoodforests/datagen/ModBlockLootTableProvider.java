@@ -34,6 +34,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.REDWOOD_FENCE.get());
         // Leaves do not drop themselves without unique circumstances, but do drop saplings, so require a createLeavesDrop loot provider
         add(ModBlocks.REDWOOD_LEAVES.get(), createLeavesDrops(ModBlocks.REDWOOD_LEAVES.get(), ModBlocks.REDWOOD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        add(ModBlocks.DEEP_REDWOOD_LEAVES.get(), createLeavesDrops(ModBlocks.REDWOOD_LEAVES.get(), ModBlocks.REDWOOD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         dropSelf(ModBlocks.REDWOOD_SAPLING.get());
         // Potted plants drop both the held plant, and the pot, so require the dropPottedContents provider
         dropPottedContents(ModBlocks.POTTED_REDWOOD_SAPLING.get());

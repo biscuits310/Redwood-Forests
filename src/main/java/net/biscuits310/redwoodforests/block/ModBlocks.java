@@ -134,6 +134,20 @@ public class ModBlocks
                     .pushReaction(PushReaction.DESTROY)
                     .isRedstoneConductor(ModBlocks::never)));
 
+    public static final DeferredBlock<Block> DEEP_REDWOOD_LEAVES = registerBlock("deep_redwood_leaves",
+            properties -> new RedwoodLeavesBlock(0.01F, ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, -9399763), 30, 60, properties
+                    .mapColor(MapColor.PLANT)
+                    .strength(0.2F)
+                    .randomTicks()
+                    .sound(SoundType.GRASS)
+                    .noOcclusion()
+                    .isValidSpawn(Blocks::ocelotOrParrot)
+                    .isSuffocating(ModBlocks::never)
+                    .isViewBlocking(ModBlocks::never)
+                    .ignitedByLava()
+                    .pushReaction(PushReaction.DESTROY)
+                    .isRedstoneConductor(ModBlocks::never)));
+
     // Creates a redwood sapling block as a DeferredBlock
     public static final DeferredBlock<Block> REDWOOD_SAPLING = registerBlock("redwood_sapling",
             // Sets the properties of a sapling block, and creates it using the SaplingBlock class

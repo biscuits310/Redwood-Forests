@@ -43,20 +43,23 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.get())
                 .add(ModBlocks.REDWOOD_WOOD.get())
                 .add(ModBlocks.STRIPPED_REDWOOD_WOOD.get())
-                .add(ModBlocks.REDWOOD_LEAVES.get());
+                .add(ModBlocks.REDWOOD_LEAVES.get())
+                .add(ModBlocks.DEEP_REDWOOD_LEAVES.get());
 
         // Allows the tutorial instruction to find a tree to finish
         tag(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)
                 .add(ModBlocks.REDWOOD_LOG.get())
                 .add(ModBlocks.REDWOOD_WOOD.get())
-                .add(ModBlocks.REDWOOD_LEAVES.get());
+                .add(ModBlocks.REDWOOD_LEAVES.get())
+                .add(ModBlocks.DEEP_REDWOOD_LEAVES.get());
 
         // Allows parrots to spawn on the block
         tag(BlockTags.PARROTS_SPAWNABLE_ON)
                 .add(ModBlocks.REDWOOD_LOG.get())
                 .add(ModBlocks.REDWOOD_WOOD.get())
                 .add(ModBlocks.STRIPPED_REDWOOD_WOOD.get())
-                .add(ModBlocks.REDWOOD_LEAVES.get());
+                .add(ModBlocks.REDWOOD_LEAVES.get())
+                .add(ModBlocks.DEEP_REDWOOD_LEAVES.get());
 
         // Marks the block as a log
         tag(BlockTags.LOGS)
@@ -106,19 +109,23 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // Makes the block break faster when holding a sword
         tag(BlockTags.SWORD_EFFICIENT)
-                .add(ModBlocks.REDWOOD_LEAVES.get());
+                .add(ModBlocks.REDWOOD_LEAVES.get())
+                .add(ModBlocks.DEEP_REDWOOD_LEAVES.get());
 
         // Allows growing trees to replace the block
         tag(BlockTags.REPLACEABLE_BY_TREES)
-                .add(ModBlocks.REDWOOD_LEAVES.get());
+                .add(ModBlocks.REDWOOD_LEAVES.get())
+                .add(ModBlocks.DEEP_REDWOOD_LEAVES.get());
 
         // Makes the block mine faster when holding a hoe
         tag(BlockTags.MINEABLE_WITH_HOE)
-                .add(ModBlocks.REDWOOD_LEAVES.get());
+                .add(ModBlocks.REDWOOD_LEAVES.get())
+                .add(ModBlocks.DEEP_REDWOOD_LEAVES.get());
 
         // Marks the block as leaves
         tag(BlockTags.LEAVES)
-                .add(ModBlocks.REDWOOD_LEAVES.get());
+                .add(ModBlocks.REDWOOD_LEAVES.get())
+                .add(ModBlocks.DEEP_REDWOOD_LEAVES.get());
 
         // Allows growing mushrooms to replace the block
         tag(BlockTags.REPLACEABLE_BY_MUSHROOMS)
