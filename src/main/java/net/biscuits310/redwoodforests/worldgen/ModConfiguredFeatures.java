@@ -40,12 +40,12 @@ public class ModConfiguredFeatures {
                 BlockStateProvider.simple(ModBlocks.REDWOOD_LOG.get()),
                 // Use GiantTrunkPlacer to make a 2x2 base
                 // Use a height of 32 blocks, and use a randomness of 4 and 3
-                new ModFenceTrunkPlacer( 6, 1, 2, ModBlocks.REDWOOD_FENCE, 0.4F),
+                new ModFenceTrunkPlacer( 20, 1, 2, ModBlocks.REDWOOD_FENCE, 0.2F),
                 // The block that acts as the leaves in the tree
                 BlockStateProvider.simple(ModBlocks.REDWOOD_LEAVES.get()),
                 // Use MegaPineFoliagePlacer to create a cone leaf shape
                 // Use the default value for radius, no offset, and have a height of 3-7
-                new ModConeFoliagePlacer(ConstantInt.of(6), ConstantInt.of(16), ConstantInt.of(20)),
+                new ModConeFoliagePlacer(ConstantInt.of(4), ConstantInt.of(1), ConstantInt.of(18)),
                 // Used to change thickness at specific points
                 new TwoLayersFeatureSize(1, 1 , 2)).build());
     }
