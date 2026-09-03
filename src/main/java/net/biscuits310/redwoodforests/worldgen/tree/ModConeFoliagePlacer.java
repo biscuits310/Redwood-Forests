@@ -4,27 +4,45 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.biscuits310.redwoodforests.block.ModBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.IntProviders;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.levelgen.feature.TreeFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
+import net.minecraft.world.level.material.Fluids;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Supplier;
 
 public class ModConeFoliagePlacer extends FoliagePlacer {
     public static final MapCodec<ModConeFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(
-            i -> foliagePlacerParts(i).and(IntProviders.codec(0, 24).fieldOf("crown_height").forGetter(p -> p.crownHeight)).apply(i, ModConeFoliagePlacer::new));
+            i -> foliagePlacerParts(i)
+                    .and(IntProviders.codec(0, 24).fieldOf("crown_height").forGetter(p -> p.crownHeight))
+                    .and(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("deep_foliage_block").forGetter(p -> p.deepFoliageBlock.get()))
+                    .apply(i, (radius, offset, crownHeight, deepFoliageBlock) ->
+                            new ModConeFoliagePlacer(
+                                    radius,
+                                    offset,
+                                    crownHeight,
+                                    () -> deepFoliageBlock
+                            )));
 
     private final IntProvider crownHeight;
+    private final Supplier<net.minecraft.world.level.block.Block> deepFoliageBlock;
 
-    public ModConeFoliagePlacer(IntProvider radius, IntProvider offset, IntProvider crownHeight){
+    public ModConeFoliagePlacer(IntProvider radius, IntProvider offset, IntProvider crownHeight, Supplier<Block> deepFoliageBlock){
         super(radius, offset);
         this.crownHeight = crownHeight;
+        this.deepFoliageBlock = deepFoliageBlock;
     }
 
     @Override
@@ -50,6 +68,7 @@ public class ModConeFoliagePlacer extends FoliagePlacer {
 
         for (int depth = 1; depth <= foliageHeight; depth++){
             currentRadius = Math.round(depth * leafRadius / (float)foliageHeight);
+            if (depth == foliageHeight) {currentRadius /= 2;}
             this.placeLeavesRow(level, foliageSetter, random, config, foliagePos, currentRadius, -depth+offset, foliageAttachment.doubleTrunk(), leafBlocks);
         }
 
@@ -71,39 +90,67 @@ public class ModConeFoliagePlacer extends FoliagePlacer {
             for (int dz = -currentRadius; dz <= currentRadius + offset; dz++) {
                 BlockPos rootPos = origin.offset(dx, 0, dz).atY(y);
 
-                if (!this.shouldSkipLocationSigned(random, dx, y, dz, currentRadius, doubleTrunk) &&
-                        !shouldSkipLocationLight(dx, dz, random, leafBlocks, rootPos, currentRadius)
-                ) {
-                    leafBlocks.add(rootPos);
-                    pos.setWithOffset(origin, dx, y, dz);
-                    tryPlaceLeaf(level, foliageSetter, random, config, pos);
+                if (!this.shouldSkipLocationSigned(random, dx, y, dz, currentRadius, doubleTrunk))
+                {
+                    int shouldSkipLocationLight = shouldSkipLocationLight(dx, dz, random, leafBlocks, rootPos, currentRadius);
+                    if (shouldSkipLocationLight == 1){
+                        leafBlocks.add(rootPos);
+                        pos.setWithOffset(origin, dx, y, dz);
+                        tryPlaceLeaf(level, foliageSetter, random, config, pos);
+                    }
+                    if (shouldSkipLocationLight == 2){
+                        leafBlocks.add(rootPos);
+                        pos.setWithOffset(origin, dx, y, dz);
+                        tryPlaceDeepLeaf(level, foliageSetter, random, config, pos);
+                    }
+
                 }
             }
         }
     }
 
-    protected boolean shouldSkipLocationLight(int dx, int dz, RandomSource random, Set<BlockPos> leafBlocks, BlockPos rootPos, int currentRadius) {
-        float skipChance = -0.1f;
+    protected int shouldSkipLocationLight(int dx, int dz, RandomSource random, Set<BlockPos> leafBlocks, BlockPos rootPos, int currentRadius) {
+        float skipChance = -0.2f;
 
         float distance = Mth.sqrt(dx*dx + dz*dz);
-        skipChance += distance / currentRadius * 0.3;
+        skipChance += distance / currentRadius * 0.4;
 
-        if (leafBlocks.contains(rootPos.west())) {skipChance+=0.15;}
-        if (leafBlocks.contains(rootPos.above())) {skipChance+=0.15;}
-        if (leafBlocks.contains(rootPos.north())) {skipChance+=0.15;}
+        if (leafBlocks.contains(rootPos.west())) {skipChance+=0.25;}
+        if (leafBlocks.contains(rootPos.above())) {skipChance+=0.4;}
+        if (leafBlocks.contains(rootPos.north())) {skipChance+=0.25;}
 
         if (skipChance > 1){skipChance = 1;}
         if (skipChance < 0){skipChance = 0;}
 
         if (random.nextFloat() < skipChance){
-            return true;
+            return 0;
         }
 
-        return false;
+        if (skipChance < 0.3) {return 2;}
+        return 1;
     }
 
     @Override
     protected boolean shouldSkipLocation(RandomSource random, int dx, int y, int dz, int currentRadius, boolean doubleTrunk) {
         return dx*dx + dz*dz > currentRadius*currentRadius;
+    }
+
+    protected boolean tryPlaceDeepLeaf(
+            WorldGenLevel level, FoliagePlacer.FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, BlockPos pos
+    ) {
+        boolean isPersistent = level.isStateAtPosition(pos, state -> state.getValueOrElse(BlockStateProperties.PERSISTENT, false));
+        if (!isPersistent && TreeFeature.validTreePos(level, pos)) {
+            BlockState foliageState = this.deepFoliageBlock.get().defaultBlockState();
+            if (foliageState.hasProperty(BlockStateProperties.WATERLOGGED)) {
+                foliageState = foliageState.setValue(
+                        BlockStateProperties.WATERLOGGED, level.isFluidAtPosition(pos, fluidState -> fluidState.isSourceOfType(Fluids.WATER))
+                );
+            }
+
+            foliageSetter.set(pos, foliageState);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

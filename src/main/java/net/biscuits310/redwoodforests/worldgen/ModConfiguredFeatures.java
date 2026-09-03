@@ -45,7 +45,7 @@ public class ModConfiguredFeatures {
                 BlockStateProvider.simple(ModBlocks.REDWOOD_LEAVES.get()),
                 // Use MegaPineFoliagePlacer to create a cone leaf shape
                 // Use the default value for radius, no offset, and have a height of 3-7
-                new ModConeFoliagePlacer(ConstantInt.of(4), ConstantInt.of(1), ConstantInt.of(18)),
+                new ModConeFoliagePlacer(ConstantInt.of(4), ConstantInt.of(1), ConstantInt.of(18), ModBlocks.DEEP_REDWOOD_LEAVES),
                 // Used to change thickness at specific points
                 new TwoLayersFeatureSize(1, 1 , 2)).build());
     }
