@@ -50,7 +50,7 @@ public class RedwoodLogBlock extends StrippableFlammableRotatedPillarBlock{
                 checkedBlocks.add(neighbourPos);
                 if (neighbourState.getValue(NATURAL_LOG) && neighbourState.getValue(PREVENTS_NEARBY_LEAF_DECAY)){
                     level.setBlock(neighbourPos, neighbourState.setValue(PREVENTS_NEARBY_LEAF_DECAY, false), 3);
-                    LeafDecayEvent.tickDiagonalRedwoodLeaves(level, neighbourPos);
+                    LeafDecayEvent.tickDiagonalRedwoodLeavesAndFences(level, neighbourPos);
                     updateConnectedLeafDecay(level, neighbourPos, checkedBlocks);
                 }
             }

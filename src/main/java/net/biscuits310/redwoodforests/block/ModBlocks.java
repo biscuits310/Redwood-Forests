@@ -110,7 +110,7 @@ public class ModBlocks
     // Creates a redwood fence block as a DeferredBlock
     public static final DeferredBlock<Block> REDWOOD_FENCE = registerBlock("redwood_fence",
             // Sets the properties of a wooden fence, and creates it using the FenceBlock class
-            properties -> new FlammableFenceBlock(5, 20, properties
+            properties -> new RedwoodFenceBlock(5, 20, properties
                     .mapColor(MapColor.WOOD)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F, 3.0F)
