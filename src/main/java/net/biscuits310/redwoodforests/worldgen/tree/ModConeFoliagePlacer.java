@@ -28,21 +28,25 @@ public class ModConeFoliagePlacer extends FoliagePlacer {
             i -> foliagePlacerParts(i)
                     .and(IntProviders.codec(0, 24).fieldOf("crown_height").forGetter(p -> p.crownHeight))
                     .and(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("deep_foliage_block").forGetter(p -> p.deepFoliageBlock.get()))
-                    .apply(i, (radius, offset, crownHeight, deepFoliageBlock) ->
+                    .and(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("fence_block").forGetter(p -> p.fenceBlock.get()))
+                    .apply(i, (radius, offset, crownHeight, deepFoliageBlock, fenceBlock) ->
                             new ModConeFoliagePlacer(
                                     radius,
                                     offset,
                                     crownHeight,
-                                    () -> deepFoliageBlock
+                                    () -> deepFoliageBlock,
+                                    () -> fenceBlock
                             )));
 
     private final IntProvider crownHeight;
     private final Supplier<net.minecraft.world.level.block.Block> deepFoliageBlock;
+    private final Supplier<net.minecraft.world.level.block.Block> fenceBlock;
 
-    public ModConeFoliagePlacer(IntProvider radius, IntProvider offset, IntProvider crownHeight, Supplier<Block> deepFoliageBlock){
+    public ModConeFoliagePlacer(IntProvider radius, IntProvider offset, IntProvider crownHeight, Supplier<Block> deepFoliageBlock, Supplier<Block> fenceBlock){
         super(radius, offset);
         this.crownHeight = crownHeight;
         this.deepFoliageBlock = deepFoliageBlock;
+        this.fenceBlock = fenceBlock;
     }
 
     @Override
@@ -98,12 +102,17 @@ public class ModConeFoliagePlacer extends FoliagePlacer {
                         pos.setWithOffset(origin, dx, y, dz);
                         tryPlaceLeaf(level, foliageSetter, random, config, pos);
                     }
-                    if (shouldSkipLocationLight == 2){
+                    if (shouldSkipLocationLight == 2) {
                         leafBlocks.add(rootPos);
                         pos.setWithOffset(origin, dx, y, dz);
                         tryPlaceDeepLeaf(level, foliageSetter, random, config, pos);
                     }
 
+                    if (shouldSkipLocationLight == 3){
+                        leafBlocks.add(rootPos);
+                        pos.setWithOffset(origin, dx, y, dz);
+                        tryPlaceFenceBlock(level, foliageSetter, random, config, pos);
+                    }
                 }
             }
         }
@@ -111,9 +120,12 @@ public class ModConeFoliagePlacer extends FoliagePlacer {
 
     protected int shouldSkipLocationLight(int dx, int dz, RandomSource random, Set<BlockPos> leafBlocks, BlockPos rootPos, int currentRadius) {
         float skipChance = -0.2f;
+        float branchChance = 0.2f;
 
         float distance = Mth.sqrt(dx*dx + dz*dz);
         skipChance += distance / currentRadius * 0.4;
+        branchChance -= distance/currentRadius * 0.2;
+
 
         if (leafBlocks.contains(rootPos.west())) {skipChance+=0.25;}
         if (leafBlocks.contains(rootPos.above())) {skipChance+=0.4;}
@@ -121,12 +133,17 @@ public class ModConeFoliagePlacer extends FoliagePlacer {
 
         if (skipChance > 1){skipChance = 1;}
         if (skipChance < 0){skipChance = 0;}
+        if (branchChance > 1){branchChance = 1;}
+        if (skipChance < 0){branchChance = 0;}
 
         if (random.nextFloat() < skipChance){
             return 0;
         }
+        if (random.nextFloat() < branchChance){
+            return 3;
+        }
 
-        if (skipChance < 0.3) {return 2;}
+        if (skipChance < 0.2) {return 2;}
         return 1;
     }
 
@@ -141,6 +158,25 @@ public class ModConeFoliagePlacer extends FoliagePlacer {
         boolean isPersistent = level.isStateAtPosition(pos, state -> state.getValueOrElse(BlockStateProperties.PERSISTENT, false));
         if (!isPersistent && TreeFeature.validTreePos(level, pos)) {
             BlockState foliageState = this.deepFoliageBlock.get().defaultBlockState();
+            if (foliageState.hasProperty(BlockStateProperties.WATERLOGGED)) {
+                foliageState = foliageState.setValue(
+                        BlockStateProperties.WATERLOGGED, level.isFluidAtPosition(pos, fluidState -> fluidState.isSourceOfType(Fluids.WATER))
+                );
+            }
+
+            foliageSetter.set(pos, foliageState);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    protected boolean tryPlaceFenceBlock(
+            WorldGenLevel level, FoliagePlacer.FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, BlockPos pos
+    ) {
+        boolean isPersistent = level.isStateAtPosition(pos, state -> state.getValueOrElse(BlockStateProperties.PERSISTENT, false));
+        if (!isPersistent && TreeFeature.validTreePos(level, pos)) {
+            BlockState foliageState = this.fenceBlock.get().defaultBlockState();
             if (foliageState.hasProperty(BlockStateProperties.WATERLOGGED)) {
                 foliageState = foliageState.setValue(
                         BlockStateProperties.WATERLOGGED, level.isFluidAtPosition(pos, fluidState -> fluidState.isSourceOfType(Fluids.WATER))
