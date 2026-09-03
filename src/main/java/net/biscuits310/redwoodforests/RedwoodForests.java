@@ -59,6 +59,7 @@ public class RedwoodForests {
         // Register blocks
         ModBlocks.register(modEventBus);
 
+
         ModTrunkPlacerType.TRUNK_PLACER_TYPES.register(modEventBus);
         ModFoliagePlacerType.FOLIAGE_PLACER_TYPES.register(modEventBus);
 

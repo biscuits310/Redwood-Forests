@@ -24,14 +24,17 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // Allows goats the drop their horn when running into a block
         tag(BlockTags.SNAPS_GOAT_HORN)
+                .add(ModBlocks.REDWOOD_ORIGIN_BLOCK.get())
                 .add(ModBlocks.REDWOOD_LOG.get());
 
         // Marks a log as one that can naturally spawn in the world
         tag(BlockTags.OVERWORLD_NATURAL_LOGS)
+                .add(ModBlocks.REDWOOD_ORIGIN_BLOCK.get())
                 .add(ModBlocks.REDWOOD_LOG.get());
 
         // Marks a log as flammable
         tag(BlockTags.LOGS_THAT_BURN)
+                .add(ModBlocks.REDWOOD_ORIGIN_BLOCK.get())
                 .add(ModBlocks.REDWOOD_LOG.get())
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.get())
                 .add(ModBlocks.REDWOOD_WOOD.get())
@@ -39,6 +42,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // Stops stone from replacing the block when lava touches water
         tag(BlockTags.LAVA_POOL_STONE_CANNOT_REPLACE)
+                .add(ModBlocks.REDWOOD_ORIGIN_BLOCK.get())
                 .add(ModBlocks.REDWOOD_LOG.get())
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.get())
                 .add(ModBlocks.REDWOOD_WOOD.get())
@@ -48,6 +52,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // Allows the tutorial instruction to find a tree to finish
         tag(BlockTags.COMPLETES_FIND_TREE_TUTORIAL)
+                .add(ModBlocks.REDWOOD_ORIGIN_BLOCK.get())
                 .add(ModBlocks.REDWOOD_LOG.get())
                 .add(ModBlocks.REDWOOD_WOOD.get())
                 .add(ModBlocks.REDWOOD_LEAVES.get())
@@ -55,6 +60,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // Allows parrots to spawn on the block
         tag(BlockTags.PARROTS_SPAWNABLE_ON)
+                .add(ModBlocks.REDWOOD_ORIGIN_BLOCK.get())
                 .add(ModBlocks.REDWOOD_LOG.get())
                 .add(ModBlocks.REDWOOD_WOOD.get())
                 .add(ModBlocks.STRIPPED_REDWOOD_WOOD.get())
@@ -63,6 +69,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // Marks the block as a log
         tag(BlockTags.LOGS)
+                .add(ModBlocks.REDWOOD_ORIGIN_BLOCK.get())
                 .add(ModBlocks.REDWOOD_LOG.get())
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.get())
                 .add(ModBlocks.REDWOOD_WOOD.get())
@@ -70,6 +77,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // Makes the block mine faster when holding an axe
         tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.REDWOOD_ORIGIN_BLOCK.get())
                 .add(ModBlocks.REDWOOD_LOG.get())
                 .add(ModBlocks.REDWOOD_PLANKS.get())
                 .add(ModBlocks.STRIPPED_REDWOOD_LOG.get())
@@ -141,11 +149,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         // Marks the block as a natural log for other mods
         tag(Tags.Blocks.NATURAL_LOGS)
+                .add(ModBlocks.REDWOOD_ORIGIN_BLOCK.get())
                 .add(ModBlocks.REDWOOD_LOG.get())
                 .add(ModBlocks.REDWOOD_WOOD.get());
 
         // Marks the block as a log that spawns naturally for other mods
         tag(Tags.Blocks.OVERWORLD_NATURAL_LOGS)
+                .add(ModBlocks.REDWOOD_ORIGIN_BLOCK.get())
                 .add(ModBlocks.REDWOOD_LOG.get());
 
         // Marks the block as a wooden fence for other mods

@@ -38,6 +38,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.REDWOOD_SAPLING.get());
         // Potted plants drop both the held plant, and the pot, so require the dropPottedContents provider
         dropPottedContents(ModBlocks.POTTED_REDWOOD_SAPLING.get());
+
+        dropOther(ModBlocks.REDWOOD_ORIGIN_BLOCK.get(), ModBlocks.REDWOOD_LOG.get().asItem());
     }
 
     // Applies all of the loot tables to the BLOCKS DeferredRegister
