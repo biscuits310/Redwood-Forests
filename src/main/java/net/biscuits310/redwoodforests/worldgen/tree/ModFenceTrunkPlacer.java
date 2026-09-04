@@ -22,22 +22,26 @@ import java.util.function.Supplier;
 public class ModFenceTrunkPlacer extends TrunkPlacer {
     public static final MapCodec<ModFenceTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(i -> trunkPlacerParts(i)
             .and(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("fence_block").forGetter(p -> p.fenceBlock.get()))
+            .and(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("origin_block").forGetter(p -> p.originBlock.get()))
             .and(Codec.floatRange(0F, 1F).fieldOf("fenceProportion").forGetter(p -> p.fenceProportion))
-            .apply(i, (baseHeight, heightRandA, heightRandB, fenceBlock, fenceProportion) ->
+            .apply(i, (baseHeight, heightRandA, heightRandB, fenceBlock, originBlock, fenceProportion) ->
                     new ModFenceTrunkPlacer(
                             baseHeight,
                             heightRandA,
                             heightRandB,
                             () -> fenceBlock,
+                            () -> originBlock,
                             fenceProportion)));
 
     private final float fenceProportion;
     private final Supplier<Block> fenceBlock;
+    private final Supplier<Block> originBlock;
 
-    public ModFenceTrunkPlacer(int baseHeight, int heightRandA, int heightRandB, Supplier<Block> fenceBlock, float fenceProportion){
+    public ModFenceTrunkPlacer(int baseHeight, int heightRandA, int heightRandB, Supplier<Block> fenceBlock, Supplier<Block> originBlock, float fenceProportion){
         super(baseHeight, heightRandA, heightRandB);
         this.fenceBlock = fenceBlock;
         this.fenceProportion = fenceProportion;
+        this.originBlock = originBlock;
     }
 
     @Override
@@ -52,10 +56,15 @@ public class ModFenceTrunkPlacer extends TrunkPlacer {
 
         BiConsumer<BlockPos, BlockState> fenceSetter =
                 (blockPos, state) -> trunkSetter.accept(blockPos, this.fenceBlock.get().defaultBlockState());
+        BiConsumer<BlockPos, BlockState> originSetter =
+                (blockPos, state) -> trunkSetter.accept(blockPos, this.originBlock.get().defaultBlockState());
 
         for (int hh = 0; hh < treeHeight; hh++){
             trunkPos.setWithOffset(origin, 0, hh, 0);
-            if (hh < treeHeight * (1-this.fenceProportion)) {
+            if (hh == 0){
+                this.placeLog(level, originSetter, random, trunkPos, config);
+            }
+            else if (hh < treeHeight * (1-this.fenceProportion)) {
                 this.placeLog(level, trunkSetter, random, trunkPos, config);
             }
             else {
