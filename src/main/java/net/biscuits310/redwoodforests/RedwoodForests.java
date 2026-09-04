@@ -3,10 +3,12 @@ package net.biscuits310.redwoodforests;
 import net.biscuits310.redwoodforests.block.ModBlocks;
 import net.biscuits310.redwoodforests.creativemodetab.ModCreativeModeTabs;
 import net.biscuits310.redwoodforests.datagen.ModDataPackProvider;
+import net.biscuits310.redwoodforests.entity.ModBlockEntities;
 import net.biscuits310.redwoodforests.item.ModItems;
 import net.biscuits310.redwoodforests.worldgen.tree.ModFoliagePlacerType;
 import net.biscuits310.redwoodforests.worldgen.tree.ModTrunkPlacerType;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -58,6 +60,8 @@ public class RedwoodForests {
         ModItems.register(modEventBus);
         // Register blocks
         ModBlocks.register(modEventBus);
+
+        ModBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
 
 
         ModTrunkPlacerType.TRUNK_PLACER_TYPES.register(modEventBus);
