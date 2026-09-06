@@ -29,25 +29,49 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 public class ModConfiguredFeatures {
 
     // Register the redwood key
-    public static final ResourceKey<ConfiguredFeature<?, ?>> REDWOOD_KEY = registerKey("redwood_key");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> REDWOOD_0_KEY = registerKey("redwood_0_key");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> REDWOOD_1_KEY = registerKey("redwood_1_key");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> REDWOOD_2_KEY = registerKey("redwood_2_key");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> REDWOOD_3_KEY = registerKey("redwood_3_key");
 
     // Actions to be executed
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context){
         // Create the redwood tree configured feature
         // Use the TreeConfigurationBuilder to create a tree
-        register(context, REDWOOD_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+        register(context, REDWOOD_0_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 // The block that acts as the log in the tree
                 BlockStateProvider.simple(ModBlocks.REDWOOD_LOG.get()),
                 // Use GiantTrunkPlacer to make a 2x2 base
                 // Use a height of 32 blocks, and use a randomness of 4 and 3
-                new ModFenceTrunkPlacer( 13, 1, 2, ModBlocks.REDWOOD_FENCE, ModBlocks.REDWOOD_ORIGIN_BLOCK, 0.25F),
+                new ModFenceTrunkPlacer( 6, 1, 2, ModBlocks.REDWOOD_FENCE, ModBlocks.REDWOOD_ORIGIN_BLOCK, 0.25F, 0),
                 // The block that acts as the leaves in the tree
                 BlockStateProvider.simple(ModBlocks.REDWOOD_LEAVES.get()),
                 // Use MegaPineFoliagePlacer to create a cone leaf shape
                 // Use the default value for radius, no offset, and have a height of 3-7
-                new ModConeFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(12), ModBlocks.DEEP_REDWOOD_LEAVES, ModBlocks.REDWOOD_FENCE),
+                new ModConeFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), ConstantInt.of(6), ModBlocks.DEEP_REDWOOD_LEAVES, ModBlocks.REDWOOD_FENCE),
                 // Used to change thickness at specific points
                 new TwoLayersFeatureSize(1, 1 , 2)).build());
+
+        register(context, REDWOOD_1_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.REDWOOD_LOG.get()),
+                new ModFenceTrunkPlacer(13, 1, 2, ModBlocks.REDWOOD_FENCE, ModBlocks.REDWOOD_ORIGIN_BLOCK, 0.25F, 1),
+                BlockStateProvider.simple(ModBlocks.REDWOOD_LEAVES.get()),
+                new ModConeFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(12), ModBlocks.DEEP_REDWOOD_LEAVES, ModBlocks.REDWOOD_FENCE),
+                new TwoLayersFeatureSize(1, 1, 2)).build());
+
+        register(context, REDWOOD_2_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.REDWOOD_LOG.get()),
+                new ModFenceTrunkPlacer(13, 1, 2, ModBlocks.REDWOOD_FENCE, ModBlocks.REDWOOD_ORIGIN_BLOCK, 0.25F, 2),
+                BlockStateProvider.simple(ModBlocks.REDWOOD_LEAVES.get()),
+                new ModConeFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(12), ModBlocks.DEEP_REDWOOD_LEAVES, ModBlocks.REDWOOD_FENCE),
+                new TwoLayersFeatureSize(1, 1, 2)).build());
+
+        register(context, REDWOOD_3_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.REDWOOD_LOG.get()),
+                new ModFenceTrunkPlacer(13, 1, 2, ModBlocks.REDWOOD_FENCE, ModBlocks.REDWOOD_ORIGIN_BLOCK, 0.25F, 3),
+                BlockStateProvider.simple(ModBlocks.REDWOOD_LEAVES.get()),
+                new ModConeFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(12), ModBlocks.DEEP_REDWOOD_LEAVES, ModBlocks.REDWOOD_FENCE),
+                new TwoLayersFeatureSize(1, 1, 2)).build());
     }
 
     // Register a configured feature key

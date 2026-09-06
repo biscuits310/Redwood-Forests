@@ -34,13 +34,16 @@ public class RedwoodOriginBlock extends RedwoodLogBlock implements EntityBlock {
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (!level.isAreaLoaded(pos, 1)) return;
-        if (random.nextInt(7) == 0 && state.getValue(GROWTH_STAGE) <= 3){
+        if (random.nextInt(7) == 0 && state.getValue(GROWTH_STAGE) <= 3 && state.getValue(PREVENTS_NEARBY_LEAF_DECAY)){
             this.advanceTree(level, pos, state, random);
         }
     }
 
     public void advanceTree(ServerLevel level, BlockPos pos, BlockState state, RandomSource random){
+        int growthStage = state.getValue(GROWTH_STAGE);
+        if (growthStage == 0){
 
+        }
     }
 
     @Override

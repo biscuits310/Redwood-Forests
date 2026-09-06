@@ -9,9 +9,9 @@ import java.util.Optional;
 // Creates tree growers, which define the chances of different types of ConfiguredFeatures spawning
 public class ModTreeGrowers {
     // Creates the redwood TreeGrower
-    public static final TreeGrower REDWOOD = new TreeGrower(
+    public static final TreeGrower REDWOOD_0 = new TreeGrower(
             // Defines the name
-            RedwoodForests.MODID + "redwood",
+            RedwoodForests.MODID + "redwood_0",
             // Defines the chance of the secondary ConfiguredFeature from spawning
             // This float is 0 as I do not currently have a secondary ConfiguredFeature
             0.0F,
@@ -22,10 +22,40 @@ public class ModTreeGrowers {
             Optional.empty(),
             // The ConfiguredFeature for the main tree
             // Using the REDWOOD_KEY as that is the ConfiguredFeature for my tree
-            Optional.of(ModConfiguredFeatures.REDWOOD_KEY),
+            Optional.of(ModConfiguredFeatures.REDWOOD_0_KEY),
             // The ConfiguredFeature for the secondary tree
             Optional.empty(),
             // Defines the flowers required to spawn a bee nest on the tree
+            Optional.empty(),
+            Optional.empty());
+
+    public static final TreeGrower REDWOOD_1 = new TreeGrower(
+            RedwoodForests.MODID + "redwood_1",
+            0.0F,
+            Optional.empty(),
+            Optional.empty(),
+            Optional.of(ModConfiguredFeatures.REDWOOD_1_KEY),
+            Optional.empty(),
+            Optional.empty(),
+            Optional.empty());
+
+    public static final TreeGrower REDWOOD_2 = new TreeGrower(
+            RedwoodForests.MODID + "redwood_2",
+            0.0F,
+            Optional.empty(),
+            Optional.empty(),
+            Optional.of(ModConfiguredFeatures.REDWOOD_2_KEY),
+            Optional.empty(),
+            Optional.empty(),
+            Optional.empty());
+
+    public static final TreeGrower REDWOOD_3 = new TreeGrower(
+            RedwoodForests.MODID + "redwood_3",
+            0.0F,
+            Optional.empty(),
+            Optional.empty(),
+            Optional.of(ModConfiguredFeatures.REDWOOD_3_KEY),
+            Optional.empty(),
             Optional.empty(),
             Optional.empty());
 }

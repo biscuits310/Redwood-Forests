@@ -8,7 +8,7 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
 public class RedwoodOriginBlockEntity extends BlockEntity {
-    private int seed = 0;
+    private long seed = 0;
 
     public RedwoodOriginBlockEntity(BlockPos worldPosition, BlockState blockState) {
         super(ModBlockEntities.REDWOOD_ORIGIN_BLOCK.get(), worldPosition, blockState);
@@ -17,7 +17,7 @@ public class RedwoodOriginBlockEntity extends BlockEntity {
     @Override
     protected void saveAdditional(ValueOutput output) {
         super.saveAdditional(output);
-        output.putInt("GrowthSeed", this.seed);
+        output.putLong("GrowthSeed", this.seed);
     }
 
     @Override
@@ -26,6 +26,10 @@ public class RedwoodOriginBlockEntity extends BlockEntity {
         this.seed = input.getIntOr("GrowthSeed", 0);
     }
 
-    public int getSeed() {return this.seed;}
+    public long getSeed() {return this.seed;}
 
+    public void setSeed(long seed){
+        this.seed = seed;
+        setChanged();
+    }
 }
