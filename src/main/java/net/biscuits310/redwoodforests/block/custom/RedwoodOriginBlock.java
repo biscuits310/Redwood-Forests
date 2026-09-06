@@ -1,16 +1,13 @@
 package net.biscuits310.redwoodforests.block.custom;
 
 import net.biscuits310.redwoodforests.block.ModBlockStateProperties;
-import net.biscuits310.redwoodforests.entity.block.RedwoodOriginBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -42,7 +39,6 @@ public class RedwoodOriginBlock extends RedwoodLogBlock implements EntityBlock {
     public void advanceTree(ServerLevel level, BlockPos pos, BlockState state, RandomSource random){
         int growthStage = state.getValue(GROWTH_STAGE);
         if (growthStage == 0){
-
         }
     }
 

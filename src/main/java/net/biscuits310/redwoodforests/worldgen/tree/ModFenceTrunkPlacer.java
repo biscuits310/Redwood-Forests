@@ -5,7 +5,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.biscuits310.redwoodforests.block.custom.RedwoodOriginBlock;
-import net.biscuits310.redwoodforests.entity.block.RedwoodOriginBlockEntity;
+import net.biscuits310.redwoodforests.block.custom.RedwoodOriginBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.RandomSource;
@@ -62,9 +62,6 @@ public class ModFenceTrunkPlacer extends TrunkPlacer {
 
         placeBelowTrunkBlock(level, trunkSetter, random, origin.below(), config);
 
-        long growthSeed = RandomSupport.generateUniqueSeed();
-        random.setSeed(growthSeed);
-
         BiConsumer<BlockPos, BlockState> fenceSetter =
                 (blockPos, state) -> trunkSetter.accept(blockPos, this.fenceBlock.get().defaultBlockState());
 
@@ -82,9 +79,6 @@ public class ModFenceTrunkPlacer extends TrunkPlacer {
 
             if (hh == 0){
                 this.placeLog(level, originSetter, random, trunkPos, config);
-                if (level.getBlockEntity(trunkPos) instanceof RedwoodOriginBlockEntity redwoodOriginBlockEntity){
-                    redwoodOriginBlockEntity.setSeed(growthSeed);
-                }
             }
 
             else if (hh < treeHeight * (1-this.fenceProportion)) {

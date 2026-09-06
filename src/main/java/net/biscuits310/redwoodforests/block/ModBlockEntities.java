@@ -1,8 +1,7 @@
-package net.biscuits310.redwoodforests.entity;
+package net.biscuits310.redwoodforests.block;
 
 import net.biscuits310.redwoodforests.RedwoodForests;
-import net.biscuits310.redwoodforests.block.ModBlocks;
-import net.biscuits310.redwoodforests.entity.block.RedwoodOriginBlockEntity;
+import net.biscuits310.redwoodforests.block.custom.RedwoodOriginBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.registries.DeferredRegister;
